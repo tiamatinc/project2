@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,18 +13,38 @@ namespace RecipeMadness1
     {
         private String _strSQL;
         private SqlConnection _conn;
+        private DataTable _dtResult;
         
         clsSQL()
         {
             _strSQL = "";
             _conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\RecipeDB.mdf;Integrated Security=True");
-        }
-        public bool addRecipe(clsRecipe rec)
-        {
             
-
-            return true; //if successful
-            //return false; //if failure
+        }
+        public void addRecipe(clsRecipe rec)
+        {
+            _strSQL = "INSERT INTO Recipes (Season, Directions, Favorite, Name) VALUES (" + rec.season + ", " +
+                       rec.directions + ", " + rec.favorite + ", " + rec.name + ");";
+            
+            executesql();
+        }
+        private void executesql()
+        {
+            connect();
+            SqlDataAdapter dataAdapt = new SqlDataAdapter(_strSQL, _conn);
+            _dtResult = new DataTable();
+            try
+            {
+                dataAdapt.Fill(_dtResult);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Query failed to execute properly. \n" + ex.Message);
+            }
+            finally
+            {
+                close();
+            }
         }
         private void connect()
         {
