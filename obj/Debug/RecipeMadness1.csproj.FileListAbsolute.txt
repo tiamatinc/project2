@@ -1,1 +1,6 @@
 c:\users\serenity\documents\visual studio 2015\Projects\RecipeMadness1\RecipeMadness1\bin\Debug\RecipeMadness1.exe.config
+C:\Users\Serenity\Documents\Visual Studio 2015\Projects\RecipeMadness1\RecipeMadness1\obj\Debug\RecipeMadness1.csprojResolveAssemblyReference.cache
+C:\Users\Serenity\Documents\Visual Studio 2015\Projects\RecipeMadness1\RecipeMadness1\obj\Debug\RecipeMadness1.frmAddRecipe.resources
+C:\Users\Serenity\Documents\Visual Studio 2015\Projects\RecipeMadness1\RecipeMadness1\obj\Debug\RecipeMadness1.frmMenu.resources
+C:\Users\Serenity\Documents\Visual Studio 2015\Projects\RecipeMadness1\RecipeMadness1\obj\Debug\RecipeMadness1.Properties.Resources.resources
+C:\Users\Serenity\Documents\Visual Studio 2015\Projects\RecipeMadness1\RecipeMadness1\obj\Debug\RecipeMadness1.csproj.GenerateResource.Cache

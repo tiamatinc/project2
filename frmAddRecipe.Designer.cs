@@ -30,6 +30,14 @@
         {
             this.lblTitle = new System.Windows.Forms.Label();
             this.txbRecipeName = new System.Windows.Forms.TextBox();
+            this.txbDescription = new System.Windows.Forms.RichTextBox();
+            this.cmbSeason = new System.Windows.Forms.ComboBox();
+            this.btnAddIngredient = new System.Windows.Forms.Button();
+            this.lstIngredients = new System.Windows.Forms.ListView();
+            this.lstCategories = new System.Windows.Forms.ListView();
+            this.lstStyles = new System.Windows.Forms.ListView();
+            this.btnNewCategory = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -44,17 +52,102 @@
             // txbRecipeName
             // 
             this.txbRecipeName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbRecipeName.Location = new System.Drawing.Point(70, 87);
+            this.txbRecipeName.Location = new System.Drawing.Point(12, 48);
             this.txbRecipeName.Name = "txbRecipeName";
             this.txbRecipeName.Size = new System.Drawing.Size(105, 20);
             this.txbRecipeName.TabIndex = 1;
             this.txbRecipeName.Text = "Recipe Name";
             // 
+            // txbDescription
+            // 
+            this.txbDescription.Location = new System.Drawing.Point(12, 74);
+            this.txbDescription.Name = "txbDescription";
+            this.txbDescription.Size = new System.Drawing.Size(239, 232);
+            this.txbDescription.TabIndex = 2;
+            this.txbDescription.Text = "Recipe Description";
+            // 
+            // cmbSeason
+            // 
+            this.cmbSeason.FormattingEnabled = true;
+            this.cmbSeason.Items.AddRange(new object[] {
+            "Spring",
+            "Summer",
+            "Fall",
+            "Winter",
+            "Any"});
+            this.cmbSeason.Location = new System.Drawing.Point(130, 47);
+            this.cmbSeason.Name = "cmbSeason";
+            this.cmbSeason.Size = new System.Drawing.Size(121, 21);
+            this.cmbSeason.TabIndex = 3;
+            this.cmbSeason.Text = "Season";
+            // 
+            // btnAddIngredient
+            // 
+            this.btnAddIngredient.Location = new System.Drawing.Point(257, 283);
+            this.btnAddIngredient.Name = "btnAddIngredient";
+            this.btnAddIngredient.Size = new System.Drawing.Size(137, 23);
+            this.btnAddIngredient.TabIndex = 5;
+            this.btnAddIngredient.Text = "Add New Ingredient";
+            this.btnAddIngredient.UseVisualStyleBackColor = true;
+            // 
+            // lstIngredients
+            // 
+            this.lstIngredients.CheckBoxes = true;
+            this.lstIngredients.Location = new System.Drawing.Point(257, 74);
+            this.lstIngredients.Name = "lstIngredients";
+            this.lstIngredients.Size = new System.Drawing.Size(137, 199);
+            this.lstIngredients.TabIndex = 9;
+            this.lstIngredients.UseCompatibleStateImageBehavior = false;
+            // 
+            // lstCategories
+            // 
+            this.lstCategories.CheckBoxes = true;
+            this.lstCategories.Location = new System.Drawing.Point(400, 74);
+            this.lstCategories.Name = "lstCategories";
+            this.lstCategories.Size = new System.Drawing.Size(137, 199);
+            this.lstCategories.TabIndex = 10;
+            this.lstCategories.UseCompatibleStateImageBehavior = false;
+            // 
+            // lstStyles
+            // 
+            this.lstStyles.CheckBoxes = true;
+            this.lstStyles.Location = new System.Drawing.Point(543, 74);
+            this.lstStyles.Name = "lstStyles";
+            this.lstStyles.Size = new System.Drawing.Size(137, 199);
+            this.lstStyles.TabIndex = 11;
+            this.lstStyles.UseCompatibleStateImageBehavior = false;
+            // 
+            // btnNewCategory
+            // 
+            this.btnNewCategory.Location = new System.Drawing.Point(400, 283);
+            this.btnNewCategory.Name = "btnNewCategory";
+            this.btnNewCategory.Size = new System.Drawing.Size(137, 23);
+            this.btnNewCategory.TabIndex = 12;
+            this.btnNewCategory.Text = "Add New Category";
+            this.btnNewCategory.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(543, 283);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(137, 23);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "Add New Style";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
             // frmAddRecipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(693, 377);
+            this.ClientSize = new System.Drawing.Size(692, 328);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnNewCategory);
+            this.Controls.Add(this.lstStyles);
+            this.Controls.Add(this.lstCategories);
+            this.Controls.Add(this.lstIngredients);
+            this.Controls.Add(this.btnAddIngredient);
+            this.Controls.Add(this.cmbSeason);
+            this.Controls.Add(this.txbDescription);
             this.Controls.Add(this.txbRecipeName);
             this.Controls.Add(this.lblTitle);
             this.Name = "frmAddRecipe";
@@ -68,5 +161,13 @@
 
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.TextBox txbRecipeName;
+        private System.Windows.Forms.RichTextBox txbDescription;
+        private System.Windows.Forms.ComboBox cmbSeason;
+        private System.Windows.Forms.Button btnAddIngredient;
+        private System.Windows.Forms.ListView lstIngredients;
+        private System.Windows.Forms.ListView lstCategories;
+        private System.Windows.Forms.ListView lstStyles;
+        private System.Windows.Forms.Button btnNewCategory;
+        private System.Windows.Forms.Button button2;
     }
 }
