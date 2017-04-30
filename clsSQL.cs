@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,34 +11,40 @@ namespace RecipeMadness1
     class clsSQL
     {
         private String _strSQL;
-        private String _conn;
+        private SqlConnection _conn;
         
         clsSQL()
         {
             _strSQL = "";
-            //_conn = connection string here
+            _conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\RecipeDB.mdf;Integrated Security=True");
         }
         public bool addRecipe(clsRecipe rec)
         {
+            
+
             return true; //if successful
-            return false; //if failure
+            //return false; //if failure
         }
         private void connect()
         {
-            MySql.Data.MySqlClient.MySqlConnection conn;
-            string myConnectionString;
-
-            myConnectionString = "server=127.0.0.1;uid=root;" +
-                "pwd=12345;database=test;";
-
             try
             {
-                conn = new MySqlConnection(myConnectionString);
-                conn.Open();
+                _conn.Open();
             }
-            catch (MySql.Data.MySqlClient.MySqlException ex)
+            catch (SqlException ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Database connection failed to open. \n" + ex.Message);
+            }
+        }
+        private void close()
+        {
+            try
+            {
+                _conn.Close();
+            }
+            catch(SqlException ex)
+            {
+                MessageBox.Show("Database connection failed to close. \n" + ex.Message);
             }
         }
 
