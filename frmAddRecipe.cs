@@ -14,6 +14,8 @@ namespace RecipeMadness1
     {
         private clsRecipe _recNewRecipe;
         private List<clsIngredient> _ingredientsUsed;
+        private List<String> _stylesUsed;
+        private List<String> _catsUsed;
         private clsSQL _data;
         private DataTable _ingredients;
         private DataTable _styles;
@@ -23,14 +25,32 @@ namespace RecipeMadness1
         {
             _recNewRecipe = new clsRecipe();
             _data = new clsSQL();
+            _ingredientsUsed = new List<clsIngredient>();
+            _stylesUsed = new List<String>();
+            _catsUsed = new List<String>();
             populateIngredients();
             populateCategories();
             populateStyles();
             InitializeComponent();
         }
-
+        public void populate(String what)
+        {
+            switch (what)
+            {
+                case "I":
+                    populateIngredients();
+                    break;
+                case "S":
+                    populateStyles();
+                    break;
+                case "C":
+                    populateCategories();
+                    break;
+            }
+        }
         private void populateIngredients()
         {
+            if (lstIngredients != null) lstIngredients.Clear();
             _ingredients = _data.getAllIngredients();
             for(int i = 0; i < _ingredients.Rows.Count; ++i)
             {
@@ -42,6 +62,7 @@ namespace RecipeMadness1
         }
         private void populateCategories()
         {
+            if(lstCategories != null) lstCategories.Clear();
             _categories = _data.getAllCategories();
             for (int i = 0; i < _categories.Rows.Count; ++i)
             {
@@ -52,6 +73,7 @@ namespace RecipeMadness1
         }
         private void populateStyles()
         {
+            if(lstStyles != null) lstStyles.Clear();
             _styles = _data.getAllStyles();
             for (int i = 0; i < _styles.Rows.Count; ++i)
             {
@@ -84,10 +106,24 @@ namespace RecipeMadness1
         {
             //collect the selected items from all of the lists
             getIngredients();
-            
-            _data.addRecipe(_recNewRecipe, _ingredientsUsed);
+            getStyles();
+            getCats();
+            _data.addRecipe(_recNewRecipe, _ingredientsUsed, _stylesUsed, _catsUsed);
         }
-       
+        private void getCats()
+        {
+            foreach (int i in lstCategories.SelectedIndices)
+            {
+                _catsUsed.Add(lstCategories.Items[i].ToString());
+            }
+        }
+        private void getStyles()
+        {
+            foreach (int i in lstStyles.SelectedIndices)
+            {
+                _stylesUsed.Add(lstStyles.Items[i].ToString());
+            }
+        }
         private void getIngredients()
         {
             foreach (int i in lstIngredients.SelectedIndices)
@@ -111,8 +147,20 @@ namespace RecipeMadness1
 
         private void btnAddIngredient_Click(object sender, EventArgs e)
         {
-            frmAddIngredient addIngr = new frmAddIngredient();
+            frmAddIngredient addIngr = new frmAddIngredient(this);
             addIngr.Show();
+        }
+
+        private void btnNewCategory_Click(object sender, EventArgs e)
+        {
+            frmAddCategory addCat = new frmAddCategory(this);
+            addCat.Show();
+        }
+
+        private void btnAddNewStyle_Click(object sender, EventArgs e)
+        {
+            frmAddStyle addStyle = new frmAddStyle(this);
+            addStyle.Close();
         }
     }
 }

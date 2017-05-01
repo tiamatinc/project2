@@ -14,8 +14,11 @@ namespace RecipeMadness1
     {
        
         private clsIngredient _ingredient;
-        public frmAddIngredient()
+        private frmAddRecipe _frmRec;
+        public frmAddIngredient(frmAddRecipe frmRec)
         {
+            _frmRec = frmRec;
+            _ingredient = new clsIngredient();
             InitializeComponent();
         }
 
@@ -38,6 +41,8 @@ namespace RecipeMadness1
         {
             clsSQL data = new clsSQL();
             data.addIngredient(_ingredient);
+            _frmRec.populate("I");
+            this.Close();
         }
     }
 }

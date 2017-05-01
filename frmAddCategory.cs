@@ -13,8 +13,10 @@ namespace RecipeMadness1
     public partial class frmAddCategory : Form
     {
         private String _cat;
-        public frmAddCategory()
+        private frmAddRecipe _frmRec;
+        public frmAddCategory(frmAddRecipe frmRec)
         {
+            _frmRec = frmRec;
             InitializeComponent();
         }
 
@@ -27,6 +29,8 @@ namespace RecipeMadness1
         {
             clsSQL data = new clsSQL();
             data.addCategory(_cat);
+            _frmRec.populate("C");
+            this.Close();
         }
     }
 }
