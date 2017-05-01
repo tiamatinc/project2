@@ -28,59 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnViewRecipe = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.listView4 = new System.Windows.Forms.ListView();
             this.label6 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.button3 = new System.Windows.Forms.Button();
+            this.dataGridViewRecipeResults = new System.Windows.Forms.DataGridView();
+            this.labelQueryResults = new System.Windows.Forms.Label();
+            this.btnNewSearch = new System.Windows.Forms.Button();
+            this.btnFavorites = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecipeResults)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // btnViewRecipe
             // 
-            this.button1.Location = new System.Drawing.Point(108, 292);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(255, 117);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Remove Recipe";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(108, 444);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(255, 117);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Update Recipe";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(108, 622);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(255, 117);
-            this.button4.TabIndex = 15;
-            this.button4.Text = "Go to View Recipe";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnViewRecipe.Location = new System.Drawing.Point(80, 752);
+            this.btnViewRecipe.Name = "btnViewRecipe";
+            this.btnViewRecipe.Size = new System.Drawing.Size(255, 117);
+            this.btnViewRecipe.TabIndex = 15;
+            this.btnViewRecipe.Text = "View Recipe";
+            this.btnViewRecipe.UseVisualStyleBackColor = true;
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(108, 781);
+            this.button5.Location = new System.Drawing.Point(405, 752);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(255, 117);
             this.button5.TabIndex = 16;
-            this.button5.Text = "(No Results) Add Recipe";
+            this.button5.Text = "Add Recipe";
             this.button5.UseVisualStyleBackColor = true;
-            // 
-            // listView4
-            // 
-            this.listView4.Location = new System.Drawing.Point(442, 122);
-            this.listView4.Name = "listView4";
-            this.listView4.Size = new System.Drawing.Size(884, 776);
-            this.listView4.TabIndex = 17;
-            this.listView4.UseCompatibleStateImageBehavior = false;
             // 
             // label6
             // 
@@ -91,52 +65,72 @@
             this.label6.TabIndex = 18;
             this.label6.Text = "Tiamat Inc.";
             // 
-            // label3
+            // dataGridViewRecipeResults
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(836, 66);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 32);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "Recipe";
+            this.dataGridViewRecipeResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewRecipeResults.Location = new System.Drawing.Point(80, 80);
+            this.dataGridViewRecipeResults.Name = "dataGridViewRecipeResults";
+            this.dataGridViewRecipeResults.RowTemplate.Height = 40;
+            this.dataGridViewRecipeResults.Size = new System.Drawing.Size(1245, 601);
+            this.dataGridViewRecipeResults.TabIndex = 20;
+            this.dataGridViewRecipeResults.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewRecipeResults_CellContentClick);
             // 
-            // button3
+            // labelQueryResults
             // 
-            this.button3.Location = new System.Drawing.Point(108, 122);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(255, 117);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "View Search Results";
-            this.button3.UseVisualStyleBackColor = true;
+            this.labelQueryResults.AutoSize = true;
+            this.labelQueryResults.Location = new System.Drawing.Point(581, 31);
+            this.labelQueryResults.Name = "labelQueryResults";
+            this.labelQueryResults.Size = new System.Drawing.Size(194, 32);
+            this.labelQueryResults.TabIndex = 21;
+            this.labelQueryResults.Text = "Query Results";
+            this.labelQueryResults.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.labelQueryResults.Click += new System.EventHandler(this.labelWelcome_Click);
+            // 
+            // btnNewSearch
+            // 
+            this.btnNewSearch.Location = new System.Drawing.Point(1070, 752);
+            this.btnNewSearch.Name = "btnNewSearch";
+            this.btnNewSearch.Size = new System.Drawing.Size(255, 117);
+            this.btnNewSearch.TabIndex = 22;
+            this.btnNewSearch.Text = "New Search";
+            this.btnNewSearch.UseVisualStyleBackColor = true;
+            // 
+            // btnFavorites
+            // 
+            this.btnFavorites.Location = new System.Drawing.Point(743, 752);
+            this.btnFavorites.Name = "btnFavorites";
+            this.btnFavorites.Size = new System.Drawing.Size(255, 117);
+            this.btnFavorites.TabIndex = 23;
+            this.btnFavorites.Text = "Favorites";
+            this.btnFavorites.UseVisualStyleBackColor = true;
             // 
             // frmResultDisplay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1392, 935);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.btnFavorites);
+            this.Controls.Add(this.btnNewSearch);
+            this.Controls.Add(this.labelQueryResults);
+            this.Controls.Add(this.dataGridViewRecipeResults);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.listView4);
             this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.btnViewRecipe);
             this.Name = "frmResultDisplay";
             this.Text = "frmResultDisplay";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewRecipeResults)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnViewRecipe;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.ListView listView4;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DataGridView dataGridViewRecipeResults;
+        private System.Windows.Forms.Label labelQueryResults;
+        private System.Windows.Forms.Button btnNewSearch;
+        private System.Windows.Forms.Button btnFavorites;
     }
 }

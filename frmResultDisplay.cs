@@ -16,5 +16,15 @@ namespace WindowsFormsApplication1
         {
             InitializeComponent();
         }
+
+        private void labelWelcome_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridViewRecipeResults_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
