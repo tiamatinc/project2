@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace RecipeMadness1
+namespace WindowsFormsApplication1
 {
     public partial class frmMenu : Form
     {
@@ -17,27 +17,14 @@ namespace RecipeMadness1
             InitializeComponent();
         }
 
-        private void btnFind_Click(object sender, EventArgs e)
+        private void label2_Click(object sender, EventArgs e)
         {
-            //Go to the adHoc query form and allow the user to set up their query
+
         }
 
-        private void btnAddRecipe_Click(object sender, EventArgs e)
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //Go to the Add Recipe form
-            frmAddRecipe addRec = new frmAddRecipe();
-            this.Hide();
-            addRec.Show();
-        }
 
-        private void btnSeeAll_Click(object sender, EventArgs e)
-        {
-            //Go to the results form after querying all recipes
-        }
-
-        private void btnFavorites_Click(object sender, EventArgs e)
-        {
-            //Go to the results form after querying favorite recipes
         }
     }
 }

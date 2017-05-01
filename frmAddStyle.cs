@@ -13,8 +13,10 @@ namespace RecipeMadness1
     public partial class frmAddStyle : Form
     {
         private String _style;
-        public frmAddStyle()
+        private frmAddRecipe _frmRec;
+        public frmAddStyle(frmAddRecipe frmRec)
         {
+            _frmRec = frmRec;
             InitializeComponent();
         }
 
@@ -28,6 +30,8 @@ namespace RecipeMadness1
         {
             clsSQL data = new clsSQL();
             data.addStyle(_style);
+            _frmRec.populate("S");
+            this.Close();
         }
     }
 }

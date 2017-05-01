@@ -1,4 +1,4 @@
-﻿namespace RecipeMadness1
+﻿namespace WindowsFormsApplication1
 {
     partial class frmMenu
     {
@@ -28,87 +28,80 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnFind = new System.Windows.Forms.Button();
-            this.btnAddRecipe = new System.Windows.Forms.Button();
-            this.btnSeeAll = new System.Windows.Forms.Button();
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.btnFavorites = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button4 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // btnFind
+            // button2
             // 
-            this.btnFind.Location = new System.Drawing.Point(88, 101);
-            this.btnFind.Name = "btnFind";
-            this.btnFind.Size = new System.Drawing.Size(88, 66);
-            this.btnFind.TabIndex = 0;
-            this.btnFind.Text = "Find Recipe";
-            this.btnFind.UseVisualStyleBackColor = true;
-            this.btnFind.Click += new System.EventHandler(this.btnFind_Click);
+            this.button2.Location = new System.Drawing.Point(113, 374);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(255, 117);
+            this.button2.TabIndex = 7;
+            this.button2.Text = "Add Recipe";
+            this.button2.UseVisualStyleBackColor = true;
             // 
-            // btnAddRecipe
+            // button1
             // 
-            this.btnAddRecipe.Location = new System.Drawing.Point(182, 101);
-            this.btnAddRecipe.Name = "btnAddRecipe";
-            this.btnAddRecipe.Size = new System.Drawing.Size(88, 66);
-            this.btnAddRecipe.TabIndex = 1;
-            this.btnAddRecipe.Text = "Add Recipe";
-            this.btnAddRecipe.UseVisualStyleBackColor = true;
-            this.btnAddRecipe.Click += new System.EventHandler(this.btnAddRecipe_Click);
+            this.button1.Location = new System.Drawing.Point(113, 568);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(255, 117);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "See Favorites";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // btnSeeAll
+            // button3
             // 
-            this.btnSeeAll.Location = new System.Drawing.Point(88, 211);
-            this.btnSeeAll.Name = "btnSeeAll";
-            this.btnSeeAll.Size = new System.Drawing.Size(88, 66);
-            this.btnSeeAll.TabIndex = 2;
-            this.btnSeeAll.Text = "See All";
-            this.btnSeeAll.UseVisualStyleBackColor = true;
-            this.btnSeeAll.Click += new System.EventHandler(this.btnSeeAll_Click);
+            this.button3.Location = new System.Drawing.Point(113, 746);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(255, 117);
+            this.button3.TabIndex = 9;
+            this.button3.Text = "See All";
+            this.button3.UseVisualStyleBackColor = true;
             // 
-            // lblTitle
+            // label6
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Poor Richard", 20F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(28, 37);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(294, 31);
-            this.lblTitle.TabIndex = 3;
-            this.lblTitle.Text = "Find and Store Your Recipes";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(1230, 901);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(154, 32);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Tiamat Inc.";
             // 
-            // btnFavorites
+            // button4
             // 
-            this.btnFavorites.Location = new System.Drawing.Point(182, 211);
-            this.btnFavorites.Name = "btnFavorites";
-            this.btnFavorites.Size = new System.Drawing.Size(88, 66);
-            this.btnFavorites.TabIndex = 4;
-            this.btnFavorites.Text = "Favorites";
-            this.btnFavorites.UseVisualStyleBackColor = true;
-            this.btnFavorites.Click += new System.EventHandler(this.btnFavorites_Click);
+            this.button4.Location = new System.Drawing.Point(113, 208);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(255, 117);
+            this.button4.TabIndex = 14;
+            this.button4.Text = "Find Recipe";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // frmMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(358, 404);
-            this.Controls.Add(this.btnFavorites);
-            this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.btnSeeAll);
-            this.Controls.Add(this.btnAddRecipe);
-            this.Controls.Add(this.btnFind);
+            this.ClientSize = new System.Drawing.Size(1392, 935);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.button2);
             this.Name = "frmMenu";
-            this.Text = "Recipes";
+            this.Text = "frmMenu";
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnFind;
-        private System.Windows.Forms.Button btnAddRecipe;
-        private System.Windows.Forms.Button btnSeeAll;
-        private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Button btnFavorites;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button4;
     }
 }
-

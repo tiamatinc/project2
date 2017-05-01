@@ -37,7 +37,7 @@
             this.lstCategories = new System.Windows.Forms.ListView();
             this.lstStyles = new System.Windows.Forms.ListView();
             this.btnNewCategory = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAddNewStyle = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -133,15 +133,17 @@
             this.btnNewCategory.TabIndex = 12;
             this.btnNewCategory.Text = "Add New Category";
             this.btnNewCategory.UseVisualStyleBackColor = true;
+            this.btnNewCategory.Click += new System.EventHandler(this.btnNewCategory_Click);
             // 
-            // button2
+            // btnAddNewStyle
             // 
-            this.button2.Location = new System.Drawing.Point(543, 257);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(137, 23);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "Add New Style";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAddNewStyle.Location = new System.Drawing.Point(543, 257);
+            this.btnAddNewStyle.Name = "btnAddNewStyle";
+            this.btnAddNewStyle.Size = new System.Drawing.Size(137, 23);
+            this.btnAddNewStyle.TabIndex = 13;
+            this.btnAddNewStyle.Text = "Add New Style";
+            this.btnAddNewStyle.UseVisualStyleBackColor = true;
+            this.btnAddNewStyle.Click += new System.EventHandler(this.btnAddNewStyle_Click);
             // 
             // btnSave
             // 
@@ -159,7 +161,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(692, 328);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnAddNewStyle);
             this.Controls.Add(this.btnNewCategory);
             this.Controls.Add(this.lstStyles);
             this.Controls.Add(this.lstCategories);
@@ -187,7 +189,7 @@
         private System.Windows.Forms.ListView lstCategories;
         private System.Windows.Forms.ListView lstStyles;
         private System.Windows.Forms.Button btnNewCategory;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAddNewStyle;
         private System.Windows.Forms.Button btnSave;
     }
 }
