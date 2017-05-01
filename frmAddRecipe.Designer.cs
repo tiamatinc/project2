@@ -38,6 +38,7 @@
             this.lstStyles = new System.Windows.Forms.ListView();
             this.btnNewCategory = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -57,17 +58,21 @@
             this.txbRecipeName.Size = new System.Drawing.Size(105, 20);
             this.txbRecipeName.TabIndex = 1;
             this.txbRecipeName.Text = "Recipe Name";
+            this.txbRecipeName.TextChanged += new System.EventHandler(this.txbRecipeName_TextChanged);
             // 
             // txbDescription
             // 
+            this.txbDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbDescription.Location = new System.Drawing.Point(12, 74);
             this.txbDescription.Name = "txbDescription";
             this.txbDescription.Size = new System.Drawing.Size(239, 232);
             this.txbDescription.TabIndex = 2;
-            this.txbDescription.Text = "Recipe Description";
+            this.txbDescription.Text = "Recipe Directions or Link";
+            this.txbDescription.TextChanged += new System.EventHandler(this.txbDescription_TextChanged);
             // 
             // cmbSeason
             // 
+            this.cmbSeason.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbSeason.FormattingEnabled = true;
             this.cmbSeason.Items.AddRange(new object[] {
             "Spring",
@@ -80,10 +85,11 @@
             this.cmbSeason.Size = new System.Drawing.Size(121, 21);
             this.cmbSeason.TabIndex = 3;
             this.cmbSeason.Text = "Season";
+            this.cmbSeason.SelectedIndexChanged += new System.EventHandler(this.cmbSeason_SelectedIndexChanged);
             // 
             // btnAddIngredient
             // 
-            this.btnAddIngredient.Location = new System.Drawing.Point(257, 283);
+            this.btnAddIngredient.Location = new System.Drawing.Point(257, 257);
             this.btnAddIngredient.Name = "btnAddIngredient";
             this.btnAddIngredient.Size = new System.Drawing.Size(137, 23);
             this.btnAddIngredient.TabIndex = 5;
@@ -93,16 +99,17 @@
             // lstIngredients
             // 
             this.lstIngredients.CheckBoxes = true;
-            this.lstIngredients.Location = new System.Drawing.Point(257, 74);
+            this.lstIngredients.Location = new System.Drawing.Point(257, 48);
             this.lstIngredients.Name = "lstIngredients";
             this.lstIngredients.Size = new System.Drawing.Size(137, 199);
             this.lstIngredients.TabIndex = 9;
             this.lstIngredients.UseCompatibleStateImageBehavior = false;
+            this.lstIngredients.SelectedIndexChanged += new System.EventHandler(this.lstIngredients_SelectedIndexChanged);
             // 
             // lstCategories
             // 
             this.lstCategories.CheckBoxes = true;
-            this.lstCategories.Location = new System.Drawing.Point(400, 74);
+            this.lstCategories.Location = new System.Drawing.Point(400, 48);
             this.lstCategories.Name = "lstCategories";
             this.lstCategories.Size = new System.Drawing.Size(137, 199);
             this.lstCategories.TabIndex = 10;
@@ -111,7 +118,7 @@
             // lstStyles
             // 
             this.lstStyles.CheckBoxes = true;
-            this.lstStyles.Location = new System.Drawing.Point(543, 74);
+            this.lstStyles.Location = new System.Drawing.Point(543, 48);
             this.lstStyles.Name = "lstStyles";
             this.lstStyles.Size = new System.Drawing.Size(137, 199);
             this.lstStyles.TabIndex = 11;
@@ -119,7 +126,7 @@
             // 
             // btnNewCategory
             // 
-            this.btnNewCategory.Location = new System.Drawing.Point(400, 283);
+            this.btnNewCategory.Location = new System.Drawing.Point(400, 257);
             this.btnNewCategory.Name = "btnNewCategory";
             this.btnNewCategory.Size = new System.Drawing.Size(137, 23);
             this.btnNewCategory.TabIndex = 12;
@@ -128,18 +135,29 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(543, 283);
+            this.button2.Location = new System.Drawing.Point(543, 257);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(137, 23);
             this.button2.TabIndex = 13;
             this.button2.Text = "Add New Style";
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(605, 293);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 14;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
             // frmAddRecipe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(692, 328);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnNewCategory);
             this.Controls.Add(this.lstStyles);
@@ -169,5 +187,6 @@
         private System.Windows.Forms.ListView lstStyles;
         private System.Windows.Forms.Button btnNewCategory;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnSave;
     }
 }

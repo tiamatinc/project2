@@ -12,7 +12,7 @@ namespace RecipeMadness1
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void main()
+        static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

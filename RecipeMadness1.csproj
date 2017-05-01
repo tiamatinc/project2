@@ -63,11 +63,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsSQL.cs" />
+    <Compile Include="frmAddCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddCategory.Designer.cs">
+      <DependentUpon>frmAddCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddIngredient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddIngredient.Designer.cs">
+      <DependentUpon>frmAddIngredient.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmAddRecipe.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmAddRecipe.Designer.cs">
       <DependentUpon>frmAddRecipe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAddStyle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAddStyle.Designer.cs">
+      <DependentUpon>frmAddStyle.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMenu.cs">
       <SubType>Form</SubType>
@@ -84,8 +102,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RecipeDBDataSet.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmAddCategory.resx">
+      <DependentUpon>frmAddCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddIngredient.resx">
+      <DependentUpon>frmAddIngredient.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAddRecipe.resx">
       <DependentUpon>frmAddRecipe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAddStyle.resx">
+      <DependentUpon>frmAddStyle.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>

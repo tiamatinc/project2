@@ -25,6 +25,9 @@ namespace RecipeMadness1
         private void btnAddRecipe_Click(object sender, EventArgs e)
         {
             //Go to the Add Recipe form
+            frmAddRecipe addRec = new frmAddRecipe();
+            this.Hide();
+            addRec.Show();
         }
 
         private void btnSeeAll_Click(object sender, EventArgs e)
