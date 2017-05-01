@@ -78,7 +78,7 @@
             // labelQueryResults
             // 
             this.labelQueryResults.AutoSize = true;
-            this.labelQueryResults.Location = new System.Drawing.Point(581, 31);
+            this.labelQueryResults.Location = new System.Drawing.Point(600, 31);
             this.labelQueryResults.Name = "labelQueryResults";
             this.labelQueryResults.Size = new System.Drawing.Size(194, 32);
             this.labelQueryResults.TabIndex = 21;
