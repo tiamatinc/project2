@@ -41,6 +41,7 @@
             this.txb.Size = new System.Drawing.Size(123, 20);
             this.txb.TabIndex = 0;
             this.txb.Text = "Category";
+            this.txb.TextChanged += new System.EventHandler(this.txb_TextChanged);
             // 
             // lblTitle
             // 
@@ -59,6 +60,7 @@
             this.btnAddCategory.TabIndex = 2;
             this.btnAddCategory.Text = "Add";
             this.btnAddCategory.UseVisualStyleBackColor = true;
+            this.btnAddCategory.Click += new System.EventHandler(this.btnAddCategory_Click);
             // 
             // frmAddCategory
             // 

@@ -95,6 +95,7 @@
             this.btnAddIngredient.TabIndex = 5;
             this.btnAddIngredient.Text = "Add New Ingredient";
             this.btnAddIngredient.UseVisualStyleBackColor = true;
+            this.btnAddIngredient.Click += new System.EventHandler(this.btnAddIngredient_Click);
             // 
             // lstIngredients
             // 

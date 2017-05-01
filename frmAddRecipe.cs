@@ -83,8 +83,36 @@ namespace RecipeMadness1
         private void btnSave_Click(object sender, EventArgs e)
         {
             //collect the selected items from all of the lists
-            foreach ()
+            getIngredients();
+            
             _data.addRecipe(_recNewRecipe, _ingredientsUsed);
+        }
+       
+        private void getIngredients()
+        {
+            foreach (int i in lstIngredients.SelectedIndices)
+            {
+                string itemname = lstIngredients.Items[i].ToString();
+                for (int k = 0; k < _ingredients.Rows.Count; ++k)
+                {
+                    DataRow dr = _ingredients.Rows[k];
+                    if (dr["Name"].ToString().Equals(itemname))
+                    {
+                        clsIngredient ingr = new clsIngredient();
+                        ingr.id = Int32.Parse(dr["Ingr_id"].ToString());
+                        ingr.name = dr["Name"].ToString();
+                        ingr.description = dr["Description"].ToString();
+                        ingr.season = dr["Season"].ToString();
+                        _ingredientsUsed.Add(ingr);
+                    }
+                }
+            }
+        }
+
+        private void btnAddIngredient_Click(object sender, EventArgs e)
+        {
+            frmAddIngredient addIngr = new frmAddIngredient();
+            addIngr.Show();
         }
     }
 }

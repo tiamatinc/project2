@@ -41,6 +41,7 @@
             this.btnAddStyle.TabIndex = 0;
             this.btnAddStyle.Text = "Add";
             this.btnAddStyle.UseVisualStyleBackColor = true;
+            this.btnAddStyle.Click += new System.EventHandler(this.btnAddStyle_Click);
             // 
             // label1
             // 
@@ -59,6 +60,7 @@
             this.txbStyle.Size = new System.Drawing.Size(118, 20);
             this.txbStyle.TabIndex = 2;
             this.txbStyle.Text = "Style";
+            this.txbStyle.TextChanged += new System.EventHandler(this.txbStyle_TextChanged);
             // 
             // frmAddStyle
             // 

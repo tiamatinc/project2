@@ -37,12 +37,23 @@ namespace RecipeMadness1
 
             executesql();
         }
+        public void addCategory(String catname)
+        {
+            _strSQL = "INSERT INTO Categories (Name) VALUES ('" + catname + "');";
+            executesql();
+        }
+        public void addStyle(String style)
+        {
+            _strSQL = "INSERT INTO Styles (Name) VALUES ('" + style + "');";
+            executesql();
+        }
         public DataTable getAllIngredients()
         {
             _strSQL = "SELECT * FROM Ingredients;";
             executesql();
             return _dtResult;
         }
+
         public DataTable getAllCategories()
         {
             _strSQL = "SELECT * FROM Categories;";
@@ -55,6 +66,7 @@ namespace RecipeMadness1
             executesql();
             return _dtResult;
         }
+        
         private void executesql()
         {
             connect();

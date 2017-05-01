@@ -43,6 +43,7 @@
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // lblTitle
             // 
@@ -61,6 +62,7 @@
             this.txbName.Size = new System.Drawing.Size(121, 20);
             this.txbName.TabIndex = 2;
             this.txbName.Text = "Ingredient Name";
+            this.txbName.TextChanged += new System.EventHandler(this.txbName_TextChanged);
             // 
             // txbDescription
             // 
@@ -70,6 +72,7 @@
             this.txbDescription.Size = new System.Drawing.Size(121, 20);
             this.txbDescription.TabIndex = 3;
             this.txbDescription.Text = "Description";
+            this.txbDescription.TextChanged += new System.EventHandler(this.txbDescription_TextChanged);
             // 
             // cmbSeason
             // 
@@ -86,6 +89,7 @@
             this.cmbSeason.Size = new System.Drawing.Size(121, 21);
             this.cmbSeason.TabIndex = 4;
             this.cmbSeason.Text = "Season";
+            this.cmbSeason.SelectedIndexChanged += new System.EventHandler(this.cmbSeason_SelectedIndexChanged);
             // 
             // frmAddIngredient
             // 
