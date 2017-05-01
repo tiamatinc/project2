@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class frmMenu : Form
+    public partial class frmViewRecipe : Form
     {
-        public frmMenu()
+        public frmViewRecipe()
         {
             InitializeComponent();
+        }
+
+        private void frmViewRecipe_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -22,7 +27,12 @@ namespace WindowsFormsApplication1
 
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

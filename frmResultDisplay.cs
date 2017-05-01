@@ -10,19 +10,19 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class frmMenu : Form
+    public partial class frmResultDisplay : Form
     {
-        public frmMenu()
+        public frmResultDisplay()
         {
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void labelWelcome_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        private void dataGridViewRecipeResults_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
