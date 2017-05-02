@@ -24,6 +24,7 @@ namespace RecipeMadness1
         }
         private void populate()
         {
+            //GET IT TO SHOW ON THE DGV FFS
             dgvResults.DataSource = _bind;
             dgvResults.Update();
         }
