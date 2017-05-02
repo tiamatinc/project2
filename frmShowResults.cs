@@ -14,7 +14,7 @@ namespace RecipeMadness1
     {
         public frmShowResults()
         {
-            InitializeComponent();
+            InitializeComponent(); 
         }
 
       
