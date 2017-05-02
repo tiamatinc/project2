@@ -26,7 +26,10 @@ namespace RecipeMadness1
 
         private void btnShowAll_Click(object sender, EventArgs e)
         {
-
+            clsSQL data = new clsSQL();
+            frmShowResults results = new frmShowResults(data.getAllTheRecipes());
+            results.Show();
+            this.Hide();
         }
     }
 }

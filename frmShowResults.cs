@@ -12,11 +12,25 @@ namespace RecipeMadness1
 {
     public partial class frmShowResults : Form
     {
-        public frmShowResults()
+        DataTable _dtResults;
+        BindingSource _bind;
+        public frmShowResults(DataTable result)
         {
-            InitializeComponent(); 
+            _dtResults = result;
+            _bind = new BindingSource();
+            _bind.DataSource = _dtResults;
+            InitializeComponent();
+            populate();
+        }
+        private void populate()
+        {
+            dgvResults.DataSource = _bind;
+            dgvResults.Update();
         }
 
-      
+        private void frmShowResults_Load(object sender, EventArgs e)
+        {
+           // dgvResults.DataSource = _dtResults;
+        }
     }
 }

@@ -124,7 +124,12 @@ namespace RecipeMadness1
             executesql();
             return _dtResult;
         }
-        
+        public DataTable getAllTheRecipes()
+        {
+            _strSQL = "SELECT * FROM Recipes;";
+            executesql();
+            return _dtResult;
+        }
         private void executesql()
         {
             connect();

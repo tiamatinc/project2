@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvResults = new System.Windows.Forms.DataGridView();
-            this.recipeDBDataSet = new RecipeMadness1.RecipeDBDataSet();
             this.recipeDBDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.recipeDBDataSet = new RecipeMadness1.RecipeDBDataSet();
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.recipeDBDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.recipeDBDataSetBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.recipeDBDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvResults
@@ -54,15 +54,15 @@
             this.dgvResults.Size = new System.Drawing.Size(691, 306);
             this.dgvResults.TabIndex = 0;
             // 
-            // recipeDBDataSet
-            // 
-            this.recipeDBDataSet.DataSetName = "RecipeDBDataSet";
-            this.recipeDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // recipeDBDataSetBindingSource
             // 
             this.recipeDBDataSetBindingSource.DataSource = this.recipeDBDataSet;
             this.recipeDBDataSetBindingSource.Position = 0;
+            // 
+            // recipeDBDataSet
+            // 
+            this.recipeDBDataSet.DataSetName = "RecipeDBDataSet";
+            this.recipeDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // frmShowResults
             // 
@@ -72,9 +72,10 @@
             this.Controls.Add(this.dgvResults);
             this.Name = "frmShowResults";
             this.Text = "frmShowResults";
+            this.Load += new System.EventHandler(this.frmShowResults_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.recipeDBDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.recipeDBDataSetBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.recipeDBDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

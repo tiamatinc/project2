@@ -29,3 +29,4 @@ C:\Users\Serenity\Source\Repos\project2\obj\Debug\RecipeMadness1.frmAddStyle.res
 C:\Users\Serenity\Source\Repos\project2\obj\Debug\RecipeMadness1.frmMenu.resources
 C:\Users\Serenity\Source\Repos\project2\obj\Debug\RecipeMadness1.Properties.Resources.resources
 C:\Users\Serenity\Source\Repos\project2\obj\Debug\RecipeMadness1.csproj.GenerateResource.Cache
+C:\Users\Serenity\Documents\Visual Studio 2015\Projects\RecipeMadness1\RecipeMadness1\obj\Debug\RecipeMadness1.frmShowResults.resources
