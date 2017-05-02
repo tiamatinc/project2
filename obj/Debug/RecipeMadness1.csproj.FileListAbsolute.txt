@@ -1,0 +1,31 @@
+c:\users\serenity\documents\visual studio 2015\Projects\RecipeMadness1\RecipeMadness1\bin\Debug\RecipeMadness1.exe.config
+C:\Users\Serenity\Documents\Visual Studio 2015\Projects\RecipeMadness1\RecipeMadness1\obj\Debug\RecipeMadness1.csprojResolveAssemblyReference.cache
+C:\Users\Serenity\Documents\Visual Studio 2015\Projects\RecipeMadness1\RecipeMadness1\obj\Debug\RecipeMadness1.frmAddRecipe.resources
+C:\Users\Serenity\Documents\Visual Studio 2015\Projects\RecipeMadness1\RecipeMadness1\obj\Debug\RecipeMadness1.frmMenu.resources
+C:\Users\Serenity\Documents\Visual Studio 2015\Projects\RecipeMadness1\RecipeMadness1\obj\Debug\RecipeMadness1.Properties.Resources.resources
+C:\Users\Serenity\Documents\Visual Studio 2015\Projects\RecipeMadness1\RecipeMadness1\obj\Debug\RecipeMadness1.csproj.GenerateResource.Cache
+C:\Users\Serenity\Documents\Visual Studio 2015\Projects\RecipeMadness1\RecipeMadness1\obj\Debug\RecipeMadness1.frmAddCategory.resources
+C:\Users\Serenity\Documents\Visual Studio 2015\Projects\RecipeMadness1\RecipeMadness1\obj\Debug\RecipeMadness1.frmAddIngredient.resources
+C:\Users\Serenity\Documents\Visual Studio 2015\Projects\RecipeMadness1\RecipeMadness1\obj\Debug\RecipeMadness1.frmAddStyle.resources
+C:\Users\Serenity\Documents\Visual Studio 2015\Projects\RecipeMadness1\RecipeMadness1\bin\Debug\RecipeDB.mdf
+C:\Users\Serenity\Documents\Visual Studio 2015\Projects\RecipeMadness1\RecipeMadness1\bin\Debug\RecipeDB_log.ldf
+C:\Users\Serenity\Documents\Visual Studio 2015\Projects\RecipeMadness1\RecipeMadness1\bin\Debug\RecipeMadness1.exe
+C:\Users\Serenity\Documents\Visual Studio 2015\Projects\RecipeMadness1\RecipeMadness1\bin\Debug\RecipeMadness1.pdb
+C:\Users\Serenity\Documents\Visual Studio 2015\Projects\RecipeMadness1\RecipeMadness1\bin\Debug\MySql.Data.dll
+C:\Users\Serenity\Documents\Visual Studio 2015\Projects\RecipeMadness1\RecipeMadness1\obj\Debug\RecipeMadness1.exe
+C:\Users\Serenity\Documents\Visual Studio 2015\Projects\RecipeMadness1\RecipeMadness1\obj\Debug\RecipeMadness1.pdb
+C:\Users\Serenity\Source\Repos\project2\bin\Debug\RecipeMadness1.exe.config
+C:\Users\Serenity\Source\Repos\project2\obj\Debug\RecipeMadness1.exe
+C:\Users\Serenity\Source\Repos\project2\obj\Debug\RecipeMadness1.pdb
+C:\Users\Serenity\Source\Repos\project2\bin\Debug\RecipeDB.mdf
+C:\Users\Serenity\Source\Repos\project2\bin\Debug\RecipeDB_log.ldf
+C:\Users\Serenity\Source\Repos\project2\bin\Debug\RecipeMadness1.exe
+C:\Users\Serenity\Source\Repos\project2\bin\Debug\RecipeMadness1.pdb
+C:\Users\Serenity\Source\Repos\project2\obj\Debug\RecipeMadness1.csprojResolveAssemblyReference.cache
+C:\Users\Serenity\Source\Repos\project2\obj\Debug\RecipeMadness1.frmAddCategory.resources
+C:\Users\Serenity\Source\Repos\project2\obj\Debug\RecipeMadness1.frmAddIngredient.resources
+C:\Users\Serenity\Source\Repos\project2\obj\Debug\RecipeMadness1.frmAddRecipe.resources
+C:\Users\Serenity\Source\Repos\project2\obj\Debug\RecipeMadness1.frmAddStyle.resources
+C:\Users\Serenity\Source\Repos\project2\obj\Debug\RecipeMadness1.frmMenu.resources
+C:\Users\Serenity\Source\Repos\project2\obj\Debug\RecipeMadness1.Properties.Resources.resources
+C:\Users\Serenity\Source\Repos\project2\obj\Debug\RecipeMadness1.csproj.GenerateResource.Cache
