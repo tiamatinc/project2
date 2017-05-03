@@ -12,6 +12,7 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -81,19 +81,31 @@
     <Compile Include="frmAddRecipe.Designer.cs">
       <DependentUpon>frmAddRecipe.cs</DependentUpon>
     </Compile>
+    <Compile Include="clsIngredient.cs" />
+    <Compile Include="clsMain.cs" />
     <Compile Include="frmAddStyle.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmAddStyle.Designer.cs">
       <DependentUpon>frmAddStyle.cs</DependentUpon>
     </Compile>
-    <Compile Include="clsIngredient.cs" />
-    <Compile Include="clsMain.cs" />
+    <Compile Include="frmAdHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdHoc.Designer.cs">
+      <DependentUpon>frmAdHoc.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMenu.Designer.cs">
       <DependentUpon>frmMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmShowRecipe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmShowRecipe.Designer.cs">
+      <DependentUpon>frmShowRecipe.cs</DependentUpon>
     </Compile>
     <Compile Include="frmShowResults.cs">
       <SubType>Form</SubType>
@@ -108,6 +120,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RecipeDBDataSet.xsd</DependentUpon>
     </Compile>
+    <Content Include="RecipeDB.mdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="frmAddCategory.resx">
       <DependentUpon>frmAddCategory.cs</DependentUpon>
     </EmbeddedResource>
@@ -120,8 +135,14 @@
     <EmbeddedResource Include="frmAddStyle.resx">
       <DependentUpon>frmAddStyle.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAdHoc.resx">
+      <DependentUpon>frmAdHoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMenu.resx">
       <DependentUpon>frmMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmShowRecipe.resx">
+      <DependentUpon>frmShowRecipe.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmShowResults.resx">
       <DependentUpon>frmShowResults.cs</DependentUpon>
@@ -160,15 +181,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="RecipeDB.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="RecipeDB_log.ldf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <DependentUpon>RecipeDB.mdf</DependentUpon>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
@@ -179,6 +191,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="RecipeDB_log.ldf">
+      <DependentUpon>RecipeDB.mdf</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -36,14 +36,14 @@ namespace RecipeMadness1
         private void recCatsInsert(List<String> catsUsed, int recID)
         {
             _strSQL = "SELECT Cat_id FROM Categories WHERE Name IN (";
-            foreach (String c in catsUsed)
+            foreach (String s in catsUsed)
             {
-                _strSQL += "'" + c + "',";
+                _strSQL += "'" + s + "',";
             }
             _strSQL = _strSQL.TrimEnd(',');
             _strSQL += ");";
             executesql();
-         
+
             _strSQL = "INSERT INTO Recipe_Categories (Cat_fk, Rec_fk) VALUES ";
             for (int i = 0; i < _dtResult.Rows.Count; ++i)
             {
@@ -105,9 +105,118 @@ namespace RecipeMadness1
             _strSQL = "INSERT INTO Styles (Name) VALUES ('" + style + "');";
             executesql();
         }
+        public void favoriteRecipe(clsRecipe rec)
+        {
+            _strSQL = "UPDATE Recipes SET Favorite = 'Y' WHERE Rec_id = " + rec.id + ";";
+            executesql();
+        }
+        public DataTable search(String strRecipeName, List<clsIngredient> lstIngredients, List<String> lstSeason, 
+                                List<String> lstStyles, List<String> lstCategories)
+        {
+            String build;
+            build = "SELECT Rec_id, Name, Season, Directions, Favorite FROM Recipes ";
+            //**************FROM CLAUSE
+            if(lstIngredients.Count > 0)
+            {
+                build += "JOIN Recipe_Contains ON Recipes.Rec_id = Recipe_Contains.Rec_fk ";
+            }
+            if(lstStyles.Count > 0)
+            {
+                build += "JOIN Recipe_Styles ON Recipe_Styles.Rec_fk = Recipes.Rec_id ";
+            }
+            if(lstCategories.Count > 0)
+            {
+                build += "JOIN Recipe_Categories ON Recipe_Categories.Rec_fk = Recipes.Rec_id ";
+            }
+            build = build.TrimEnd(',');
+            //**************END FROM CLAUSE
+            build += " WHERE ";
+            //**************WHERE CLAUSE
+            if(strRecipeName != "")
+            {
+                build += "Recipes.Name = '" + strRecipeName + "' AND ";
+            }
+            if(lstIngredients.Count > 0)
+            {
+                build += "Ingr_fk IN (";
+                foreach (clsIngredient i in lstIngredients)
+                {
+                    build += "'" + i.id + "',";
+                }
+                build = build.TrimEnd(',');
+                build += ") AND ";
+            }
+            if(lstCategories.Count > 0)
+            {
+                build += "Cat_fk IN (";
+                foreach (String i in lstCategories)
+                {
+                    build += "'" + getCategoryID(i) + "',";
+                }
+                build = build.TrimEnd(',');
+                build += ") AND ";
+            }
+            if(lstStyles.Count > 0)
+            {
+                build += "Style_fk IN (";
+                foreach (String i in lstStyles)
+                {
+                    build += "'" + getStyleID(i) + "',";
+                }
+                build = build.TrimEnd(',');
+                build += ") AND ";
+            }
+            if(lstSeason.Count > 0)
+            {
+                build += "Season IN (";
+                foreach (String i in lstSeason)
+                {
+                    build += "'" + i + "',";
+                }
+                build = build.TrimEnd(',');
+                build += ") AND ";
+            }
+            build = build.Substring(0, build.Length - 4);
+            build += ";";
+            _strSQL = build;
+            executesql();
+            return _dtResult;
+        }
+        private String getStyleID(String name)
+        {
+            _strSQL = "SELECT Style_id FROM Styles WHERE Name = '" + name + "';";
+            executesql();
+            return _dtResult.Rows[0][0].ToString();
+        }
+        private String getCategoryID(String name)
+        {
+            _strSQL = "SELECT Cat_id FROM Categories WHERE Name = '" + name + "';";
+            executesql();
+            return _dtResult.Rows[0][0].ToString();
+        }
         public DataTable getAllIngredients()
         {
             _strSQL = "SELECT * FROM Ingredients;";
+            executesql();
+            return _dtResult;
+        }
+        public DataTable getStyles(clsRecipe rec)
+        {
+            _strSQL = "SELECT Name FROM Styles, Recipe_Styles  WHERE Style_id = Style_fk AND Rec_fk = " + rec.id + ";";
+            executesql();
+            return _dtResult;
+        }
+
+        public DataTable getCategories(clsRecipe rec)
+        {
+            _strSQL = "SELECT Name FROM Categories, Recipe_Categories WHERE Cat_id = Cat_fk AND Rec_fk = " + rec.id + ";";
+            executesql();
+            return _dtResult;
+        }
+        public DataTable getIngredients(clsRecipe rec)
+        {
+            _strSQL = "SELECT Name, Description, Season FROM Ingredients, Recipe_Contains WHERE Ingr_fk = Ingr_id AND Rec_fk = " 
+                        + rec.id + ";";
             executesql();
             return _dtResult;
         }
@@ -126,7 +235,14 @@ namespace RecipeMadness1
         }
         public DataTable getAllTheRecipes()
         {
-            _strSQL = "SELECT * FROM Recipes;";
+            _strSQL = "SELECT Rec_id, Name, Season, Directions, Favorite FROM Recipes;";
+            //Using column names instead of * to get the column order in the preferred way.
+            executesql();
+            return _dtResult;
+        }
+        public DataTable getFavoriteRecipes()
+        {
+            _strSQL = "SELECT Rec_id, Name, Season, Directions, Favorite FROM Recipes WHERE Favorite = 'Y';";
             executesql();
             return _dtResult;
         }

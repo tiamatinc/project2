@@ -12,26 +12,34 @@ namespace RecipeMadness1
 {
     public partial class frmAddStyle : Form
     {
-        private String _style;
+        private String style;
         private frmAddRecipe _frmRec;
+        private clsSQL _data;
         public frmAddStyle(frmAddRecipe frmRec)
         {
             _frmRec = frmRec;
+            _data = new clsSQL();
             InitializeComponent();
         }
 
-        private void txbStyle_TextChanged(object sender, EventArgs e)
+        private void txbStyleName_TextChanged(object sender, EventArgs e)
         {
-            _style = txbStyle.Text;
-
+            style = txbStyleName.Text;
         }
 
-        private void btnAddStyle_Click(object sender, EventArgs e)
+        private void btnAdd_Click(object sender, EventArgs e)
         {
-            clsSQL data = new clsSQL();
-            data.addStyle(_style);
-            _frmRec.populate("S");
-            this.Close();
+            if (style != null && style != "")
+            {
+                _data.addStyle(style);
+                this.Hide();
+                _frmRec.populate("S");
+                _frmRec.Show();
+            }
+            else
+            {
+                MessageBox.Show("Enter a style or close this window to exit adding a new style.");
+            }
         }
     }
 }

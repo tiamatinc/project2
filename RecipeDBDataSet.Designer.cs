@@ -20,17 +20,17 @@ namespace RecipeMadness1 {
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("RecipeDBDataSet")]
+    [global::System.Xml.Serialization.XmlRootAttribute("RecipeDB")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
     public partial class RecipeDBDataSet : global::System.Data.DataSet {
         
         private CategoriesDataTable tableCategories;
         
-        private ContainsDataTable tableContains;
-        
         private IngredientsDataTable tableIngredients;
         
         private Recipe_CategoriesDataTable tableRecipe_Categories;
+        
+        private Recipe_ContainsDataTable tableRecipe_Contains;
         
         private Recipe_StylesDataTable tableRecipe_Styles;
         
@@ -38,13 +38,13 @@ namespace RecipeMadness1 {
         
         private StylesDataTable tableStyles;
         
-        private global::System.Data.DataRelation relationIngr_id;
+        private global::System.Data.DataRelation relationCat_fk;
         
-        private global::System.Data.DataRelation relationRec_id;
+        private global::System.Data.DataRelation relationRecipe_fk;
         
-        private global::System.Data.DataRelation relationCat_id;
+        private global::System.Data.DataRelation relationIngre_id;
         
-        private global::System.Data.DataRelation relationRecipe_id;
+        private global::System.Data.DataRelation relationReci_id;
         
         private global::System.Data.DataRelation relationRec_fk;
         
@@ -81,14 +81,14 @@ namespace RecipeMadness1 {
                 if ((ds.Tables["Categories"] != null)) {
                     base.Tables.Add(new CategoriesDataTable(ds.Tables["Categories"]));
                 }
-                if ((ds.Tables["Contains"] != null)) {
-                    base.Tables.Add(new ContainsDataTable(ds.Tables["Contains"]));
-                }
                 if ((ds.Tables["Ingredients"] != null)) {
                     base.Tables.Add(new IngredientsDataTable(ds.Tables["Ingredients"]));
                 }
                 if ((ds.Tables["Recipe_Categories"] != null)) {
                     base.Tables.Add(new Recipe_CategoriesDataTable(ds.Tables["Recipe_Categories"]));
+                }
+                if ((ds.Tables["Recipe_Contains"] != null)) {
+                    base.Tables.Add(new Recipe_ContainsDataTable(ds.Tables["Recipe_Contains"]));
                 }
                 if ((ds.Tables["Recipe_Styles"] != null)) {
                     base.Tables.Add(new Recipe_StylesDataTable(ds.Tables["Recipe_Styles"]));
@@ -131,16 +131,6 @@ namespace RecipeMadness1 {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public ContainsDataTable Contains {
-            get {
-                return this.tableContains;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Browsable(false)]
-        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
         public IngredientsDataTable Ingredients {
             get {
                 return this.tableIngredients;
@@ -154,6 +144,16 @@ namespace RecipeMadness1 {
         public Recipe_CategoriesDataTable Recipe_Categories {
             get {
                 return this.tableRecipe_Categories;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public Recipe_ContainsDataTable Recipe_Contains {
+            get {
+                return this.tableRecipe_Contains;
             }
         }
         
@@ -257,14 +257,14 @@ namespace RecipeMadness1 {
                 if ((ds.Tables["Categories"] != null)) {
                     base.Tables.Add(new CategoriesDataTable(ds.Tables["Categories"]));
                 }
-                if ((ds.Tables["Contains"] != null)) {
-                    base.Tables.Add(new ContainsDataTable(ds.Tables["Contains"]));
-                }
                 if ((ds.Tables["Ingredients"] != null)) {
                     base.Tables.Add(new IngredientsDataTable(ds.Tables["Ingredients"]));
                 }
                 if ((ds.Tables["Recipe_Categories"] != null)) {
                     base.Tables.Add(new Recipe_CategoriesDataTable(ds.Tables["Recipe_Categories"]));
+                }
+                if ((ds.Tables["Recipe_Contains"] != null)) {
+                    base.Tables.Add(new Recipe_ContainsDataTable(ds.Tables["Recipe_Contains"]));
                 }
                 if ((ds.Tables["Recipe_Styles"] != null)) {
                     base.Tables.Add(new Recipe_StylesDataTable(ds.Tables["Recipe_Styles"]));
@@ -314,12 +314,6 @@ namespace RecipeMadness1 {
                     this.tableCategories.InitVars();
                 }
             }
-            this.tableContains = ((ContainsDataTable)(base.Tables["Contains"]));
-            if ((initTable == true)) {
-                if ((this.tableContains != null)) {
-                    this.tableContains.InitVars();
-                }
-            }
             this.tableIngredients = ((IngredientsDataTable)(base.Tables["Ingredients"]));
             if ((initTable == true)) {
                 if ((this.tableIngredients != null)) {
@@ -330,6 +324,12 @@ namespace RecipeMadness1 {
             if ((initTable == true)) {
                 if ((this.tableRecipe_Categories != null)) {
                     this.tableRecipe_Categories.InitVars();
+                }
+            }
+            this.tableRecipe_Contains = ((Recipe_ContainsDataTable)(base.Tables["Recipe_Contains"]));
+            if ((initTable == true)) {
+                if ((this.tableRecipe_Contains != null)) {
+                    this.tableRecipe_Contains.InitVars();
                 }
             }
             this.tableRecipe_Styles = ((Recipe_StylesDataTable)(base.Tables["Recipe_Styles"]));
@@ -350,10 +350,10 @@ namespace RecipeMadness1 {
                     this.tableStyles.InitVars();
                 }
             }
-            this.relationIngr_id = this.Relations["Ingr_id"];
-            this.relationRec_id = this.Relations["Rec_id"];
-            this.relationCat_id = this.Relations["Cat_id"];
-            this.relationRecipe_id = this.Relations["Recipe_id"];
+            this.relationCat_fk = this.Relations["Cat_fk"];
+            this.relationRecipe_fk = this.Relations["Recipe_fk"];
+            this.relationIngre_id = this.Relations["Ingre_id"];
+            this.relationReci_id = this.Relations["Reci_id"];
             this.relationRec_fk = this.Relations["Rec_fk"];
             this.relationStyle_fk = this.Relations["Style_fk"];
         }
@@ -361,41 +361,41 @@ namespace RecipeMadness1 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "RecipeDBDataSet";
+            this.DataSetName = "RecipeDB";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/RecipeDBDataSet.xsd";
+            this.Namespace = "http://tempuri.org/RecipeDB.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableCategories = new CategoriesDataTable();
             base.Tables.Add(this.tableCategories);
-            this.tableContains = new ContainsDataTable();
-            base.Tables.Add(this.tableContains);
             this.tableIngredients = new IngredientsDataTable();
             base.Tables.Add(this.tableIngredients);
             this.tableRecipe_Categories = new Recipe_CategoriesDataTable();
             base.Tables.Add(this.tableRecipe_Categories);
+            this.tableRecipe_Contains = new Recipe_ContainsDataTable();
+            base.Tables.Add(this.tableRecipe_Contains);
             this.tableRecipe_Styles = new Recipe_StylesDataTable();
             base.Tables.Add(this.tableRecipe_Styles);
             this.tableRecipes = new RecipesDataTable();
             base.Tables.Add(this.tableRecipes);
             this.tableStyles = new StylesDataTable();
             base.Tables.Add(this.tableStyles);
-            this.relationIngr_id = new global::System.Data.DataRelation("Ingr_id", new global::System.Data.DataColumn[] {
-                        this.tableIngredients.Ingr_idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableContains.Ingr_fkColumn}, false);
-            this.Relations.Add(this.relationIngr_id);
-            this.relationRec_id = new global::System.Data.DataRelation("Rec_id", new global::System.Data.DataColumn[] {
-                        this.tableRecipes.Rec_idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableContains.Rec_fkColumn}, false);
-            this.Relations.Add(this.relationRec_id);
-            this.relationCat_id = new global::System.Data.DataRelation("Cat_id", new global::System.Data.DataColumn[] {
+            this.relationCat_fk = new global::System.Data.DataRelation("Cat_fk", new global::System.Data.DataColumn[] {
                         this.tableCategories.Cat_idColumn}, new global::System.Data.DataColumn[] {
-                        this.tableRecipe_Categories.Cat_idColumn}, false);
-            this.Relations.Add(this.relationCat_id);
-            this.relationRecipe_id = new global::System.Data.DataRelation("Recipe_id", new global::System.Data.DataColumn[] {
+                        this.tableRecipe_Categories.Cat_fkColumn}, false);
+            this.Relations.Add(this.relationCat_fk);
+            this.relationRecipe_fk = new global::System.Data.DataRelation("Recipe_fk", new global::System.Data.DataColumn[] {
                         this.tableRecipes.Rec_idColumn}, new global::System.Data.DataColumn[] {
                         this.tableRecipe_Categories.Rec_fkColumn}, false);
-            this.Relations.Add(this.relationRecipe_id);
+            this.Relations.Add(this.relationRecipe_fk);
+            this.relationIngre_id = new global::System.Data.DataRelation("Ingre_id", new global::System.Data.DataColumn[] {
+                        this.tableIngredients.Ingr_idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableRecipe_Contains.Ingr_fkColumn}, false);
+            this.Relations.Add(this.relationIngre_id);
+            this.relationReci_id = new global::System.Data.DataRelation("Reci_id", new global::System.Data.DataColumn[] {
+                        this.tableRecipes.Rec_idColumn}, new global::System.Data.DataColumn[] {
+                        this.tableRecipe_Contains.Rec_fkColumn}, false);
+            this.Relations.Add(this.relationReci_id);
             this.relationRec_fk = new global::System.Data.DataRelation("Rec_fk", new global::System.Data.DataColumn[] {
                         this.tableRecipes.Rec_idColumn}, new global::System.Data.DataColumn[] {
                         this.tableRecipe_Styles.Rec_fkColumn}, false);
@@ -414,12 +414,6 @@ namespace RecipeMadness1 {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeContains() {
-            return false;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeIngredients() {
             return false;
         }
@@ -427,6 +421,12 @@ namespace RecipeMadness1 {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private bool ShouldSerializeRecipe_Categories() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeRecipe_Contains() {
             return false;
         }
         
@@ -507,13 +507,13 @@ namespace RecipeMadness1 {
         public delegate void CategoriesRowChangeEventHandler(object sender, CategoriesRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void ContainsRowChangeEventHandler(object sender, ContainsRowChangeEvent e);
-        
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void IngredientsRowChangeEventHandler(object sender, IngredientsRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void Recipe_CategoriesRowChangeEventHandler(object sender, Recipe_CategoriesRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void Recipe_ContainsRowChangeEventHandler(object sender, Recipe_ContainsRowChangeEvent e);
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void Recipe_StylesRowChangeEventHandler(object sender, Recipe_StylesRowChangeEvent e);
@@ -621,10 +621,10 @@ namespace RecipeMadness1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CategoriesRow AddCategoriesRow(int Cat_id, string name) {
+            public CategoriesRow AddCategoriesRow(string name) {
                 CategoriesRow rowCategoriesRow = ((CategoriesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Cat_id,
+                        null,
                         name};
                 rowCategoriesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowCategoriesRow);
@@ -668,7 +668,11 @@ namespace RecipeMadness1 {
                 base.Columns.Add(this.columnname);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnCat_id}, true));
+                this.columnCat_id.AutoIncrement = true;
+                this.columnCat_id.AutoIncrementSeed = -1;
+                this.columnCat_id.AutoIncrementStep = -1;
                 this.columnCat_id.AllowDBNull = false;
+                this.columnCat_id.ReadOnly = true;
                 this.columnCat_id.Unique = true;
                 this.columnname.AllowDBNull = false;
                 this.columnname.MaxLength = 50;
@@ -758,300 +762,6 @@ namespace RecipeMadness1 {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "CategoriesDataTable";
-                type.Attributes.Add(attribute2);
-                type.Particle = sequence;
-                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
-                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
-                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
-                        global::System.Xml.Schema.XmlSchema schema = null;
-                        dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
-                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
-                            s2.SetLength(0);
-                            schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
-                                s1.Position = 0;
-                                s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
-                                    ;
-                                }
-                                if ((s1.Position == s1.Length)) {
-                                    return type;
-                                }
-                            }
-                        }
-                    }
-                    finally {
-                        if ((s1 != null)) {
-                            s1.Close();
-                        }
-                        if ((s2 != null)) {
-                            s2.Close();
-                        }
-                    }
-                }
-                xs.Add(dsSchema);
-                return type;
-            }
-        }
-        
-        /// <summary>
-        ///Represents the strongly named DataTable class.
-        ///</summary>
-        [global::System.Serializable()]
-        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class ContainsDataTable : global::System.Data.TypedTableBase<ContainsRow> {
-            
-            private global::System.Data.DataColumn columnCont_id;
-            
-            private global::System.Data.DataColumn columnIngr_fk;
-            
-            private global::System.Data.DataColumn columnRec_fk;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ContainsDataTable() {
-                this.TableName = "Contains";
-                this.BeginInit();
-                this.InitClass();
-                this.EndInit();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ContainsDataTable(global::System.Data.DataTable table) {
-                this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
-                    this.CaseSensitive = table.CaseSensitive;
-                }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
-                    this.Locale = table.Locale;
-                }
-                if ((table.Namespace != table.DataSet.Namespace)) {
-                    this.Namespace = table.Namespace;
-                }
-                this.Prefix = table.Prefix;
-                this.MinimumCapacity = table.MinimumCapacity;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected ContainsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
-                this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Cont_idColumn {
-                get {
-                    return this.columnCont_id;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Ingr_fkColumn {
-                get {
-                    return this.columnIngr_fk;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Rec_fkColumn {
-                get {
-                    return this.columnRec_fk;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
-                    return this.Rows.Count;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ContainsRow this[int index] {
-                get {
-                    return ((ContainsRow)(this.Rows[index]));
-                }
-            }
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ContainsRowChangeEventHandler ContainsRowChanging;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ContainsRowChangeEventHandler ContainsRowChanged;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ContainsRowChangeEventHandler ContainsRowDeleting;
-            
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event ContainsRowChangeEventHandler ContainsRowDeleted;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddContainsRow(ContainsRow row) {
-                this.Rows.Add(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ContainsRow AddContainsRow(int Cont_id, IngredientsRow parentIngredientsRowByIngr_id, RecipesRow parentRecipesRowByRec_id) {
-                ContainsRow rowContainsRow = ((ContainsRow)(this.NewRow()));
-                object[] columnValuesArray = new object[] {
-                        Cont_id,
-                        null,
-                        null};
-                if ((parentIngredientsRowByIngr_id != null)) {
-                    columnValuesArray[1] = parentIngredientsRowByIngr_id[0];
-                }
-                if ((parentRecipesRowByRec_id != null)) {
-                    columnValuesArray[2] = parentRecipesRowByRec_id[0];
-                }
-                rowContainsRow.ItemArray = columnValuesArray;
-                this.Rows.Add(rowContainsRow);
-                return rowContainsRow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ContainsRow FindByCont_id(int Cont_id) {
-                return ((ContainsRow)(this.Rows.Find(new object[] {
-                            Cont_id})));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
-                ContainsDataTable cln = ((ContainsDataTable)(base.Clone()));
-                cln.InitVars();
-                return cln;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
-                return new ContainsDataTable();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
-                this.columnCont_id = base.Columns["Cont_id"];
-                this.columnIngr_fk = base.Columns["Ingr_fk"];
-                this.columnRec_fk = base.Columns["Rec_fk"];
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
-                this.columnCont_id = new global::System.Data.DataColumn("Cont_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCont_id);
-                this.columnIngr_fk = new global::System.Data.DataColumn("Ingr_fk", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIngr_fk);
-                this.columnRec_fk = new global::System.Data.DataColumn("Rec_fk", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnRec_fk);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnCont_id}, true));
-                this.columnCont_id.AllowDBNull = false;
-                this.columnCont_id.Unique = true;
-                this.columnIngr_fk.AllowDBNull = false;
-                this.columnRec_fk.AllowDBNull = false;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ContainsRow NewContainsRow() {
-                return ((ContainsRow)(this.NewRow()));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new ContainsRow(builder);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
-                return typeof(ContainsRow);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanged(e);
-                if ((this.ContainsRowChanged != null)) {
-                    this.ContainsRowChanged(this, new ContainsRowChangeEvent(((ContainsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowChanging(e);
-                if ((this.ContainsRowChanging != null)) {
-                    this.ContainsRowChanging(this, new ContainsRowChangeEvent(((ContainsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleted(e);
-                if ((this.ContainsRowDeleted != null)) {
-                    this.ContainsRowDeleted(this, new ContainsRowChangeEvent(((ContainsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
-                base.OnRowDeleting(e);
-                if ((this.ContainsRowDeleting != null)) {
-                    this.ContainsRowDeleting(this, new ContainsRowChangeEvent(((ContainsRow)(e.Row)), e.Action));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveContainsRow(ContainsRow row) {
-                this.Rows.Remove(row);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
-                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                RecipeDBDataSet ds = new RecipeDBDataSet();
-                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
-                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
-                any1.MinOccurs = new decimal(0);
-                any1.MaxOccurs = decimal.MaxValue;
-                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any1);
-                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
-                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
-                any2.MinOccurs = new decimal(1);
-                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
-                sequence.Items.Add(any2);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute1.Name = "namespace";
-                attribute1.FixedValue = ds.Namespace;
-                type.Attributes.Add(attribute1);
-                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
-                attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "ContainsDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1209,10 +919,10 @@ namespace RecipeMadness1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public IngredientsRow AddIngredientsRow(int Ingr_id, string Name, string Description, string Season) {
+            public IngredientsRow AddIngredientsRow(string Name, string Description, string Season) {
                 IngredientsRow rowIngredientsRow = ((IngredientsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Ingr_id,
+                        null,
                         Name,
                         Description,
                         Season};
@@ -1264,12 +974,15 @@ namespace RecipeMadness1 {
                 base.Columns.Add(this.columnSeason);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnIngr_id}, true));
+                this.columnIngr_id.AutoIncrement = true;
+                this.columnIngr_id.AutoIncrementSeed = -1;
+                this.columnIngr_id.AutoIncrementStep = -1;
                 this.columnIngr_id.AllowDBNull = false;
+                this.columnIngr_id.ReadOnly = true;
                 this.columnIngr_id.Unique = true;
                 this.columnName.AllowDBNull = false;
                 this.columnName.MaxLength = 50;
                 this.columnDescription.MaxLength = 250;
-                this.columnSeason.AllowDBNull = false;
                 this.columnSeason.MaxLength = 50;
             }
             
@@ -1408,7 +1121,7 @@ namespace RecipeMadness1 {
             
             private global::System.Data.DataColumn columnRec_fk;
             
-            private global::System.Data.DataColumn columnCat_id;
+            private global::System.Data.DataColumn columnCat_fk;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1461,9 +1174,9 @@ namespace RecipeMadness1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn Cat_idColumn {
+            public global::System.Data.DataColumn Cat_fkColumn {
                 get {
-                    return this.columnCat_id;
+                    return this.columnCat_fk;
                 }
             }
             
@@ -1504,17 +1217,17 @@ namespace RecipeMadness1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Recipe_CategoriesRow AddRecipe_CategoriesRow(int Id, RecipesRow parentRecipesRowByRecipe_id, CategoriesRow parentCategoriesRowByCat_id) {
+            public Recipe_CategoriesRow AddRecipe_CategoriesRow(RecipesRow parentRecipesRowByRecipe_fk, CategoriesRow parentCategoriesRowByCat_fk) {
                 Recipe_CategoriesRow rowRecipe_CategoriesRow = ((Recipe_CategoriesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Id,
+                        null,
                         null,
                         null};
-                if ((parentRecipesRowByRecipe_id != null)) {
-                    columnValuesArray[1] = parentRecipesRowByRecipe_id[0];
+                if ((parentRecipesRowByRecipe_fk != null)) {
+                    columnValuesArray[1] = parentRecipesRowByRecipe_fk[0];
                 }
-                if ((parentCategoriesRowByCat_id != null)) {
-                    columnValuesArray[2] = parentCategoriesRowByCat_id[0];
+                if ((parentCategoriesRowByCat_fk != null)) {
+                    columnValuesArray[2] = parentCategoriesRowByCat_fk[0];
                 }
                 rowRecipe_CategoriesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowRecipe_CategoriesRow);
@@ -1547,7 +1260,7 @@ namespace RecipeMadness1 {
             internal void InitVars() {
                 this.columnId = base.Columns["Id"];
                 this.columnRec_fk = base.Columns["Rec_fk"];
-                this.columnCat_id = base.Columns["Cat_id"];
+                this.columnCat_fk = base.Columns["Cat_fk"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1557,14 +1270,18 @@ namespace RecipeMadness1 {
                 base.Columns.Add(this.columnId);
                 this.columnRec_fk = new global::System.Data.DataColumn("Rec_fk", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnRec_fk);
-                this.columnCat_id = new global::System.Data.DataColumn("Cat_id", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnCat_id);
+                this.columnCat_fk = new global::System.Data.DataColumn("Cat_fk", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCat_fk);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
+                this.columnId.AutoIncrement = true;
+                this.columnId.AutoIncrementSeed = -1;
+                this.columnId.AutoIncrementStep = -1;
                 this.columnId.AllowDBNull = false;
+                this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
                 this.columnRec_fk.AllowDBNull = false;
-                this.columnCat_id.AllowDBNull = false;
+                this.columnCat_fk.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1651,6 +1368,304 @@ namespace RecipeMadness1 {
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
                 attribute2.FixedValue = "Recipe_CategoriesDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class Recipe_ContainsDataTable : global::System.Data.TypedTableBase<Recipe_ContainsRow> {
+            
+            private global::System.Data.DataColumn columnCont_id;
+            
+            private global::System.Data.DataColumn columnIngr_fk;
+            
+            private global::System.Data.DataColumn columnRec_fk;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public Recipe_ContainsDataTable() {
+                this.TableName = "Recipe_Contains";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal Recipe_ContainsDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected Recipe_ContainsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Cont_idColumn {
+                get {
+                    return this.columnCont_id;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Ingr_fkColumn {
+                get {
+                    return this.columnIngr_fk;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Rec_fkColumn {
+                get {
+                    return this.columnRec_fk;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public Recipe_ContainsRow this[int index] {
+                get {
+                    return ((Recipe_ContainsRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event Recipe_ContainsRowChangeEventHandler Recipe_ContainsRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event Recipe_ContainsRowChangeEventHandler Recipe_ContainsRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event Recipe_ContainsRowChangeEventHandler Recipe_ContainsRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event Recipe_ContainsRowChangeEventHandler Recipe_ContainsRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddRecipe_ContainsRow(Recipe_ContainsRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public Recipe_ContainsRow AddRecipe_ContainsRow(IngredientsRow parentIngredientsRowByIngre_id, RecipesRow parentRecipesRowByReci_id) {
+                Recipe_ContainsRow rowRecipe_ContainsRow = ((Recipe_ContainsRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        null,
+                        null,
+                        null};
+                if ((parentIngredientsRowByIngre_id != null)) {
+                    columnValuesArray[1] = parentIngredientsRowByIngre_id[0];
+                }
+                if ((parentRecipesRowByReci_id != null)) {
+                    columnValuesArray[2] = parentRecipesRowByReci_id[0];
+                }
+                rowRecipe_ContainsRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowRecipe_ContainsRow);
+                return rowRecipe_ContainsRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public Recipe_ContainsRow FindByCont_id(int Cont_id) {
+                return ((Recipe_ContainsRow)(this.Rows.Find(new object[] {
+                            Cont_id})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                Recipe_ContainsDataTable cln = ((Recipe_ContainsDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new Recipe_ContainsDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnCont_id = base.Columns["Cont_id"];
+                this.columnIngr_fk = base.Columns["Ingr_fk"];
+                this.columnRec_fk = base.Columns["Rec_fk"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnCont_id = new global::System.Data.DataColumn("Cont_id", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCont_id);
+                this.columnIngr_fk = new global::System.Data.DataColumn("Ingr_fk", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIngr_fk);
+                this.columnRec_fk = new global::System.Data.DataColumn("Rec_fk", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRec_fk);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
+                                this.columnCont_id}, true));
+                this.columnCont_id.AutoIncrement = true;
+                this.columnCont_id.AutoIncrementSeed = -1;
+                this.columnCont_id.AutoIncrementStep = -1;
+                this.columnCont_id.AllowDBNull = false;
+                this.columnCont_id.ReadOnly = true;
+                this.columnCont_id.Unique = true;
+                this.columnIngr_fk.AllowDBNull = false;
+                this.columnRec_fk.AllowDBNull = false;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public Recipe_ContainsRow NewRecipe_ContainsRow() {
+                return ((Recipe_ContainsRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new Recipe_ContainsRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(Recipe_ContainsRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.Recipe_ContainsRowChanged != null)) {
+                    this.Recipe_ContainsRowChanged(this, new Recipe_ContainsRowChangeEvent(((Recipe_ContainsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.Recipe_ContainsRowChanging != null)) {
+                    this.Recipe_ContainsRowChanging(this, new Recipe_ContainsRowChangeEvent(((Recipe_ContainsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.Recipe_ContainsRowDeleted != null)) {
+                    this.Recipe_ContainsRowDeleted(this, new Recipe_ContainsRowChangeEvent(((Recipe_ContainsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.Recipe_ContainsRowDeleting != null)) {
+                    this.Recipe_ContainsRowDeleting(this, new Recipe_ContainsRowChangeEvent(((Recipe_ContainsRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveRecipe_ContainsRow(Recipe_ContainsRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                RecipeDBDataSet ds = new RecipeDBDataSet();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "Recipe_ContainsDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -1798,10 +1813,10 @@ namespace RecipeMadness1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public Recipe_StylesRow AddRecipe_StylesRow(int Id, StylesRow parentStylesRowByStyle_fk, RecipesRow parentRecipesRowByRec_fk) {
+            public Recipe_StylesRow AddRecipe_StylesRow(StylesRow parentStylesRowByStyle_fk, RecipesRow parentRecipesRowByRec_fk) {
                 Recipe_StylesRow rowRecipe_StylesRow = ((Recipe_StylesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Id,
+                        null,
                         null,
                         null};
                 if ((parentStylesRowByStyle_fk != null)) {
@@ -1855,7 +1870,11 @@ namespace RecipeMadness1 {
                 base.Columns.Add(this.columnRec_fk);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
+                this.columnId.AutoIncrement = true;
+                this.columnId.AutoIncrementSeed = -1;
+                this.columnId.AutoIncrementStep = -1;
                 this.columnId.AllowDBNull = false;
+                this.columnId.ReadOnly = true;
                 this.columnId.Unique = true;
                 this.columnStyle_fk.AllowDBNull = false;
                 this.columnRec_fk.AllowDBNull = false;
@@ -2112,10 +2131,10 @@ namespace RecipeMadness1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RecipesRow AddRecipesRow(int Rec_id, string Season, string Directions, string Favorite, string Name) {
+            public RecipesRow AddRecipesRow(string Season, string Directions, string Favorite, string Name) {
                 RecipesRow rowRecipesRow = ((RecipesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Rec_id,
+                        null,
                         Season,
                         Directions,
                         Favorite,
@@ -2171,12 +2190,17 @@ namespace RecipeMadness1 {
                 base.Columns.Add(this.columnName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnRec_id}, true));
+                this.columnRec_id.AutoIncrement = true;
+                this.columnRec_id.AutoIncrementSeed = -1;
+                this.columnRec_id.AutoIncrementStep = -1;
                 this.columnRec_id.AllowDBNull = false;
+                this.columnRec_id.ReadOnly = true;
                 this.columnRec_id.Unique = true;
                 this.columnSeason.MaxLength = 50;
                 this.columnDirections.AllowDBNull = false;
                 this.columnDirections.MaxLength = 1000;
                 this.columnFavorite.MaxLength = 1;
+                this.columnName.AllowDBNull = false;
                 this.columnName.MaxLength = 50;
             }
             
@@ -2401,10 +2425,10 @@ namespace RecipeMadness1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public StylesRow AddStylesRow(int Style_id, string Name) {
+            public StylesRow AddStylesRow(string Name) {
                 StylesRow rowStylesRow = ((StylesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        Style_id,
+                        null,
                         Name};
                 rowStylesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowStylesRow);
@@ -2448,7 +2472,11 @@ namespace RecipeMadness1 {
                 base.Columns.Add(this.columnName);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnStyle_id}, true));
+                this.columnStyle_id.AutoIncrement = true;
+                this.columnStyle_id.AutoIncrementSeed = -1;
+                this.columnStyle_id.AutoIncrementStep = -1;
                 this.columnStyle_id.AllowDBNull = false;
+                this.columnStyle_id.ReadOnly = true;
                 this.columnStyle_id.Unique = true;
                 this.columnName.AllowDBNull = false;
                 this.columnName.MaxLength = 50;
@@ -2617,81 +2645,11 @@ namespace RecipeMadness1 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public Recipe_CategoriesRow[] GetRecipe_CategoriesRows() {
-                if ((this.Table.ChildRelations["Cat_id"] == null)) {
+                if ((this.Table.ChildRelations["Cat_fk"] == null)) {
                     return new Recipe_CategoriesRow[0];
                 }
                 else {
-                    return ((Recipe_CategoriesRow[])(base.GetChildRows(this.Table.ChildRelations["Cat_id"])));
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Represents strongly named DataRow class.
-        ///</summary>
-        public partial class ContainsRow : global::System.Data.DataRow {
-            
-            private ContainsDataTable tableContains;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal ContainsRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
-                this.tableContains = ((ContainsDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Cont_id {
-                get {
-                    return ((int)(this[this.tableContains.Cont_idColumn]));
-                }
-                set {
-                    this[this.tableContains.Cont_idColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Ingr_fk {
-                get {
-                    return ((int)(this[this.tableContains.Ingr_fkColumn]));
-                }
-                set {
-                    this[this.tableContains.Ingr_fkColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Rec_fk {
-                get {
-                    return ((int)(this[this.tableContains.Rec_fkColumn]));
-                }
-                set {
-                    this[this.tableContains.Rec_fkColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public IngredientsRow IngredientsRow {
-                get {
-                    return ((IngredientsRow)(this.GetParentRow(this.Table.ParentRelations["Ingr_id"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["Ingr_id"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public RecipesRow RecipesRow {
-                get {
-                    return ((RecipesRow)(this.GetParentRow(this.Table.ParentRelations["Rec_id"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["Rec_id"]);
+                    return ((Recipe_CategoriesRow[])(base.GetChildRows(this.Table.ChildRelations["Cat_fk"])));
                 }
             }
         }
@@ -2752,7 +2710,12 @@ namespace RecipeMadness1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Season {
                 get {
-                    return ((string)(this[this.tableIngredients.SeasonColumn]));
+                    try {
+                        return ((string)(this[this.tableIngredients.SeasonColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Season\' in table \'Ingredients\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tableIngredients.SeasonColumn] = value;
@@ -2773,12 +2736,24 @@ namespace RecipeMadness1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ContainsRow[] GetContainsRows() {
-                if ((this.Table.ChildRelations["Ingr_id"] == null)) {
-                    return new ContainsRow[0];
+            public bool IsSeasonNull() {
+                return this.IsNull(this.tableIngredients.SeasonColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSeasonNull() {
+                this[this.tableIngredients.SeasonColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public Recipe_ContainsRow[] GetRecipe_ContainsRows() {
+                if ((this.Table.ChildRelations["Ingre_id"] == null)) {
+                    return new Recipe_ContainsRow[0];
                 }
                 else {
-                    return ((ContainsRow[])(base.GetChildRows(this.Table.ChildRelations["Ingr_id"])));
+                    return ((Recipe_ContainsRow[])(base.GetChildRows(this.Table.ChildRelations["Ingre_id"])));
                 }
             }
         }
@@ -2821,12 +2796,12 @@ namespace RecipeMadness1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Cat_id {
+            public int Cat_fk {
                 get {
-                    return ((int)(this[this.tableRecipe_Categories.Cat_idColumn]));
+                    return ((int)(this[this.tableRecipe_Categories.Cat_fkColumn]));
                 }
                 set {
-                    this[this.tableRecipe_Categories.Cat_idColumn] = value;
+                    this[this.tableRecipe_Categories.Cat_fkColumn] = value;
                 }
             }
             
@@ -2834,10 +2809,10 @@ namespace RecipeMadness1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public CategoriesRow CategoriesRow {
                 get {
-                    return ((CategoriesRow)(this.GetParentRow(this.Table.ParentRelations["Cat_id"])));
+                    return ((CategoriesRow)(this.GetParentRow(this.Table.ParentRelations["Cat_fk"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["Cat_id"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["Cat_fk"]);
                 }
             }
             
@@ -2845,10 +2820,80 @@ namespace RecipeMadness1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public RecipesRow RecipesRow {
                 get {
-                    return ((RecipesRow)(this.GetParentRow(this.Table.ParentRelations["Recipe_id"])));
+                    return ((RecipesRow)(this.GetParentRow(this.Table.ParentRelations["Recipe_fk"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["Recipe_id"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["Recipe_fk"]);
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class Recipe_ContainsRow : global::System.Data.DataRow {
+            
+            private Recipe_ContainsDataTable tableRecipe_Contains;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal Recipe_ContainsRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableRecipe_Contains = ((Recipe_ContainsDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Cont_id {
+                get {
+                    return ((int)(this[this.tableRecipe_Contains.Cont_idColumn]));
+                }
+                set {
+                    this[this.tableRecipe_Contains.Cont_idColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Ingr_fk {
+                get {
+                    return ((int)(this[this.tableRecipe_Contains.Ingr_fkColumn]));
+                }
+                set {
+                    this[this.tableRecipe_Contains.Ingr_fkColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int Rec_fk {
+                get {
+                    return ((int)(this[this.tableRecipe_Contains.Rec_fkColumn]));
+                }
+                set {
+                    this[this.tableRecipe_Contains.Rec_fkColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public IngredientsRow IngredientsRow {
+                get {
+                    return ((IngredientsRow)(this.GetParentRow(this.Table.ParentRelations["Ingre_id"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["Ingre_id"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public RecipesRow RecipesRow {
+                get {
+                    return ((RecipesRow)(this.GetParentRow(this.Table.ParentRelations["Reci_id"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["Reci_id"]);
                 }
             }
         }
@@ -2995,12 +3040,7 @@ namespace RecipeMadness1 {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Name {
                 get {
-                    try {
-                        return ((string)(this[this.tableRecipes.NameColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Name\' in table \'Recipes\' is DBNull.", e);
-                    }
+                    return ((string)(this[this.tableRecipes.NameColumn]));
                 }
                 set {
                     this[this.tableRecipes.NameColumn] = value;
@@ -3033,35 +3073,23 @@ namespace RecipeMadness1 {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNameNull() {
-                return this.IsNull(this.tableRecipes.NameColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNameNull() {
-                this[this.tableRecipes.NameColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ContainsRow[] GetContainsRows() {
-                if ((this.Table.ChildRelations["Rec_id"] == null)) {
-                    return new ContainsRow[0];
-                }
-                else {
-                    return ((ContainsRow[])(base.GetChildRows(this.Table.ChildRelations["Rec_id"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public Recipe_CategoriesRow[] GetRecipe_CategoriesRows() {
-                if ((this.Table.ChildRelations["Recipe_id"] == null)) {
+                if ((this.Table.ChildRelations["Recipe_fk"] == null)) {
                     return new Recipe_CategoriesRow[0];
                 }
                 else {
-                    return ((Recipe_CategoriesRow[])(base.GetChildRows(this.Table.ChildRelations["Recipe_id"])));
+                    return ((Recipe_CategoriesRow[])(base.GetChildRows(this.Table.ChildRelations["Recipe_fk"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public Recipe_ContainsRow[] GetRecipe_ContainsRows() {
+                if ((this.Table.ChildRelations["Reci_id"] == null)) {
+                    return new Recipe_ContainsRow[0];
+                }
+                else {
+                    return ((Recipe_ContainsRow[])(base.GetChildRows(this.Table.ChildRelations["Reci_id"])));
                 }
             }
             
@@ -3163,40 +3191,6 @@ namespace RecipeMadness1 {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class ContainsRowChangeEvent : global::System.EventArgs {
-            
-            private ContainsRow eventRow;
-            
-            private global::System.Data.DataRowAction eventAction;
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ContainsRowChangeEvent(ContainsRow row, global::System.Data.DataRowAction action) {
-                this.eventRow = row;
-                this.eventAction = action;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ContainsRow Row {
-                get {
-                    return this.eventRow;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
-                    return this.eventAction;
-                }
-            }
-        }
-        
-        /// <summary>
-        ///Row event argument class
-        ///</summary>
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public class IngredientsRowChangeEvent : global::System.EventArgs {
             
             private IngredientsRow eventRow;
@@ -3247,6 +3241,40 @@ namespace RecipeMadness1 {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public Recipe_CategoriesRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class Recipe_ContainsRowChangeEvent : global::System.EventArgs {
+            
+            private Recipe_ContainsRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public Recipe_ContainsRowChangeEvent(Recipe_ContainsRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public Recipe_ContainsRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -3364,7 +3392,7 @@ namespace RecipeMadness1 {
         }
     }
 }
-namespace RecipeMadness1.RecipeDBDataSetTableAdapters {
+namespace RecipeMadness1.RecipeDBTableAdapters {
     
     
     /// <summary>
@@ -3500,21 +3528,20 @@ namespace RecipeMadness1.RecipeDBDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Categories] ([Cat_id], [name]) VALUES (@Cat_id, @name);\r\nSELEC" +
-                "T Cat_id, name FROM Categories WHERE (Cat_id = @Cat_id)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Categories] ([name]) VALUES (@name);\r\nSELECT Cat_id, name FROM" +
+                " Categories WHERE (Cat_id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cat_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cat_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Categories] SET [Cat_id] = @Cat_id, [name] = @name WHERE (([Cat_id]" +
-                " = @Original_Cat_id) AND ([name] = @Original_name));\r\nSELECT Cat_id, name FROM C" +
-                "ategories WHERE (Cat_id = @Cat_id)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Categories] SET [name] = @name WHERE (([Cat_id] = @Original_Cat_id)" +
+                " AND ([name] = @Original_name));\r\nSELECT Cat_id, name FROM Categories WHERE (Cat" +
+                "_id = @Cat_id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cat_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cat_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cat_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cat_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cat_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Cat_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3619,13 +3646,12 @@ namespace RecipeMadness1.RecipeDBDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Cat_id, string name) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Cat_id));
+        public virtual int Insert(string name) {
             if ((name == null)) {
                 throw new global::System.ArgumentNullException("name");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(name));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(name));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -3647,21 +3673,21 @@ namespace RecipeMadness1.RecipeDBDataSetTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Cat_id, string name, int Original_Cat_id, string Original_name) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Cat_id));
+        public virtual int Update(string name, int Original_Cat_id, string Original_name, int Cat_id) {
             if ((name == null)) {
                 throw new global::System.ArgumentNullException("name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(name));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(name));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Cat_id));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_Cat_id));
             if ((Original_name == null)) {
                 throw new global::System.ArgumentNullException("Original_name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_name));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Original_name));
             }
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Cat_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3683,316 +3709,7 @@ namespace RecipeMadness1.RecipeDBDataSetTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string name, int Original_Cat_id, string Original_name) {
-            return this.Update(Original_Cat_id, name, Original_Cat_id, Original_name);
-        }
-    }
-    
-    /// <summary>
-    ///Represents the connection and commands used to retrieve and save data.
-    ///</summary>
-    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
-    [global::System.ComponentModel.ToolboxItem(true)]
-    [global::System.ComponentModel.DataObjectAttribute(true)]
-    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
-        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
-    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class ContainsTableAdapter : global::System.ComponentModel.Component {
-        
-        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
-        private global::System.Data.SqlClient.SqlConnection _connection;
-        
-        private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
-        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
-        private bool _clearBeforeFill;
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public ContainsTableAdapter() {
-            this.ClearBeforeFill = true;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
-                    this.InitAdapter();
-                }
-                return this._adapter;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
-                    this.InitConnection();
-                }
-                return this._connection;
-            }
-            set {
-                this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
-                    this.Adapter.InsertCommand.Connection = value;
-                }
-                if ((this.Adapter.DeleteCommand != null)) {
-                    this.Adapter.DeleteCommand.Connection = value;
-                }
-                if ((this.Adapter.UpdateCommand != null)) {
-                    this.Adapter.UpdateCommand.Connection = value;
-                }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
-                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
-                    }
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
-                return this._transaction;
-            }
-            set {
-                this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    this.CommandCollection[i].Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
-                    this.Adapter.DeleteCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
-                    this.Adapter.InsertCommand.Transaction = this._transaction;
-                }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
-                    this.Adapter.UpdateCommand.Transaction = this._transaction;
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
-                    this.InitCommandCollection();
-                }
-                return this._commandCollection;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
-                return this._clearBeforeFill;
-            }
-            set {
-                this._clearBeforeFill = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitAdapter() {
-            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
-            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
-            tableMapping.SourceTable = "Table";
-            tableMapping.DataSetTable = "Contains";
-            tableMapping.ColumnMappings.Add("Cont_id", "Cont_id");
-            tableMapping.ColumnMappings.Add("Ingr_fk", "Ingr_fk");
-            tableMapping.ColumnMappings.Add("Rec_fk", "Rec_fk");
-            this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Contains] WHERE (([Cont_id] = @Original_Cont_id) AND ([Ingr_fk" +
-                "] = @Original_Ingr_fk) AND ([Rec_fk] = @Original_Rec_fk))";
-            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cont_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cont_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Ingr_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ingr_fk", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rec_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rec_fk", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Contains] ([Cont_id], [Ingr_fk], [Rec_fk]) VALUES (@Cont_id, @" +
-                "Ingr_fk, @Rec_fk);\r\nSELECT Cont_id, Ingr_fk, Rec_fk FROM [Contains] WHERE (Cont_" +
-                "id = @Cont_id)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cont_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cont_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ingr_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ingr_fk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rec_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rec_fk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Contains] SET [Cont_id] = @Cont_id, [Ingr_fk] = @Ingr_fk, [Rec_fk] = @Rec_fk WHERE (([Cont_id] = @Original_Cont_id) AND ([Ingr_fk] = @Original_Ingr_fk) AND ([Rec_fk] = @Original_Rec_fk));
-SELECT Cont_id, Ingr_fk, Rec_fk FROM [Contains] WHERE (Cont_id = @Cont_id)";
-            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cont_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cont_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ingr_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ingr_fk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rec_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rec_fk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cont_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cont_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Ingr_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ingr_fk", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rec_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rec_fk", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitConnection() {
-            this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::RecipeMadness1.Properties.Settings.Default.RecipeDBConnectionString;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
-            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Cont_id, Ingr_fk, Rec_fk FROM dbo.[Contains]";
-            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(RecipeDBDataSet.ContainsDataTable dataTable) {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((this.ClearBeforeFill == true)) {
-                dataTable.Clear();
-            }
-            int returnValue = this.Adapter.Fill(dataTable);
-            return returnValue;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual RecipeDBDataSet.ContainsDataTable GetData() {
-            this.Adapter.SelectCommand = this.CommandCollection[0];
-            RecipeDBDataSet.ContainsDataTable dataTable = new RecipeDBDataSet.ContainsDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(RecipeDBDataSet.ContainsDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(RecipeDBDataSet dataSet) {
-            return this.Adapter.Update(dataSet, "Contains");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Cont_id, int Original_Ingr_fk, int Original_Rec_fk) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Cont_id));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_Ingr_fk));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_Rec_fk));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
-            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.DeleteCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.DeleteCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Cont_id, int Ingr_fk, int Rec_fk) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Cont_id));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Ingr_fk));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(Rec_fk));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Cont_id, int Ingr_fk, int Rec_fk, int Original_Cont_id, int Original_Ingr_fk, int Original_Rec_fk) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Cont_id));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Ingr_fk));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Rec_fk));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Cont_id));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Ingr_fk));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Rec_fk));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
-            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.UpdateCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.UpdateCommand.Connection.Close();
-                }
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Ingr_fk, int Rec_fk, int Original_Cont_id, int Original_Ingr_fk, int Original_Rec_fk) {
-            return this.Update(Original_Cont_id, Ingr_fk, Rec_fk, Original_Cont_id, Original_Ingr_fk, Original_Rec_fk);
+            return this.Update(name, Original_Cat_id, Original_name, Original_Cat_id);
         }
     }
     
@@ -4124,31 +3841,28 @@ SELECT Cont_id, Ingr_fk, Rec_fk FROM [Contains] WHERE (Cont_id = @Cont_id)";
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Ingredients] WHERE (([Ingr_id] = @Original_Ingr_id) AND ([Name" +
-                "] = @Original_Name) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR " +
-                "([Description] = @Original_Description)) AND ([Season] = @Original_Season))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Ingredients] WHERE (([Ingr_id] = @Original_Ingr_id) AND ([Name] = @Original_Name) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) AND ((@IsNull_Season = 1 AND [Season] IS NULL) OR ([Season] = @Original_Season)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Ingr_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ingr_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Description", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Description", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Season", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Season", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Season", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Season", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Ingredients] ([Ingr_id], [Name], [Description], [Season]) VALU" +
-                "ES (@Ingr_id, @Name, @Description, @Season);\r\nSELECT Ingr_id, Name, Description," +
-                " Season FROM Ingredients WHERE (Ingr_id = @Ingr_id)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Ingredients] ([Name], [Description], [Season]) VALUES (@Name, " +
+                "@Description, @Season);\r\nSELECT Ingr_id, Name, Description, Season FROM Ingredie" +
+                "nts WHERE (Ingr_id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ingr_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ingr_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Season", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Season", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Ingredients] SET [Ingr_id] = @Ingr_id, [Name] = @Name, [Description] = @Description, [Season] = @Season WHERE (([Ingr_id] = @Original_Ingr_id) AND ([Name] = @Original_Name) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) AND ([Season] = @Original_Season));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Ingredients] SET [Name] = @Name, [Description] = @Description, [Season] = @Season WHERE (([Ingr_id] = @Original_Ingr_id) AND ([Name] = @Original_Name) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) AND ((@IsNull_Season = 1 AND [Season] IS NULL) OR ([Season] = @Original_Season)));
 SELECT Ingr_id, Name, Description, Season FROM Ingredients WHERE (Ingr_id = @Ingr_id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ingr_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ingr_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Season", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Season", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -4156,7 +3870,9 @@ SELECT Ingr_id, Name, Description, Season FROM Ingredients WHERE (Ingr_id = @Ing
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Description", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Description", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Season", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Season", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Season", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Season", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ingr_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Ingr_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4250,10 +3966,12 @@ SELECT Ingr_id, Name, Description, Season FROM Ingredients WHERE (Ingr_id = @Ing
                 this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_Description));
             }
             if ((Original_Season == null)) {
-                throw new global::System.ArgumentNullException("Original_Season");
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_Season));
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_Season));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -4275,25 +3993,24 @@ SELECT Ingr_id, Name, Description, Season FROM Ingredients WHERE (Ingr_id = @Ing
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Ingr_id, string Name, string Description, string Season) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Ingr_id));
+        public virtual int Insert(string Name, string Description, string Season) {
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Name));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Name));
             }
             if ((Description == null)) {
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Description));
+            }
+            if ((Season == null)) {
                 this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Description));
-            }
-            if ((Season == null)) {
-                throw new global::System.ArgumentNullException("Season");
-            }
-            else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Season));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Season));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -4315,47 +4032,49 @@ SELECT Ingr_id, Name, Description, Season FROM Ingredients WHERE (Ingr_id = @Ing
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Ingr_id, string Name, string Description, string Season, int Original_Ingr_id, string Original_Name, string Original_Description, string Original_Season) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Ingr_id));
+        public virtual int Update(string Name, string Description, string Season, int Original_Ingr_id, string Original_Name, string Original_Description, string Original_Season, int Ingr_id) {
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Name));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Name));
             }
             if ((Description == null)) {
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Description));
+            }
+            if ((Season == null)) {
                 this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Description));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Season));
             }
-            if ((Season == null)) {
-                throw new global::System.ArgumentNullException("Season");
-            }
-            else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Season));
-            }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Ingr_id));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Ingr_id));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(Original_Name));
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Original_Name));
             }
             if ((Original_Description == null)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_Description));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_Description));
             }
             if ((Original_Season == null)) {
-                throw new global::System.ArgumentNullException("Original_Season");
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
             }
             else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
                 this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_Season));
             }
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Ingr_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4377,7 +4096,7 @@ SELECT Ingr_id, Name, Description, Season FROM Ingredients WHERE (Ingr_id = @Ing
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string Name, string Description, string Season, int Original_Ingr_id, string Original_Name, string Original_Description, string Original_Season) {
-            return this.Update(Original_Ingr_id, Name, Description, Season, Original_Ingr_id, Original_Name, Original_Description, Original_Season);
+            return this.Update(Name, Description, Season, Original_Ingr_id, Original_Name, Original_Description, Original_Season, Original_Ingr_id);
         }
     }
     
@@ -4504,38 +4223,37 @@ SELECT Ingr_id, Name, Description, Season FROM Ingredients WHERE (Ingr_id = @Ing
             tableMapping.DataSetTable = "Recipe_Categories";
             tableMapping.ColumnMappings.Add("Id", "Id");
             tableMapping.ColumnMappings.Add("Rec_fk", "Rec_fk");
-            tableMapping.ColumnMappings.Add("Cat_id", "Cat_id");
+            tableMapping.ColumnMappings.Add("Cat_fk", "Cat_fk");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
             this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Recipe_Categories] WHERE (([Id] = @Original_Id) AND ([Rec_fk] " +
-                "= @Original_Rec_fk) AND ([Cat_id] = @Original_Cat_id))";
+                "= @Original_Rec_fk) AND ([Cat_fk] = @Original_Cat_fk))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rec_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rec_fk", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cat_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cat_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cat_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cat_fk", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Recipe_Categories] ([Id], [Rec_fk], [Cat_id]) VALUES (@Id, @Re" +
-                "c_fk, @Cat_id);\r\nSELECT Id, Rec_fk, Cat_id FROM Recipe_Categories WHERE (Id = @I" +
-                "d)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Recipe_Categories] ([Rec_fk], [Cat_fk]) VALUES (@Rec_fk, @Cat_" +
+                "fk);\r\nSELECT Id, Rec_fk, Cat_fk FROM Recipe_Categories WHERE (Id = SCOPE_IDENTIT" +
+                "Y())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rec_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rec_fk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cat_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cat_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cat_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cat_fk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Recipe_Categories] SET [Id] = @Id, [Rec_fk] = @Rec_fk, [Cat_id] = @" +
-                "Cat_id WHERE (([Id] = @Original_Id) AND ([Rec_fk] = @Original_Rec_fk) AND ([Cat_" +
-                "id] = @Original_Cat_id));\r\nSELECT Id, Rec_fk, Cat_id FROM Recipe_Categories WHER" +
-                "E (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Recipe_Categories] SET [Rec_fk] = @Rec_fk, [Cat_fk] = @Cat_fk WHERE" +
+                " (([Id] = @Original_Id) AND ([Rec_fk] = @Original_Rec_fk) AND ([Cat_fk] = @Origi" +
+                "nal_Cat_fk));\r\nSELECT Id, Rec_fk, Cat_fk FROM Recipe_Categories WHERE (Id = @Id)" +
+                "";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rec_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rec_fk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cat_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cat_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cat_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cat_fk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rec_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rec_fk", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cat_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cat_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cat_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cat_fk", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4551,7 +4269,7 @@ SELECT Ingr_id, Name, Description, Season FROM Ingredients WHERE (Ingr_id = @Ing
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, Rec_fk, Cat_id FROM dbo.Recipe_Categories";
+            this._commandCollection[0].CommandText = "SELECT Id, Rec_fk, Cat_fk FROM dbo.Recipe_Categories";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4612,10 +4330,10 @@ SELECT Ingr_id, Name, Description, Season FROM Ingredients WHERE (Ingr_id = @Ing
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, int Original_Rec_fk, int Original_Cat_id) {
+        public virtual int Delete(int Original_Id, int Original_Rec_fk, int Original_Cat_fk) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_Rec_fk));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_Cat_id));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_Cat_fk));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4636,10 +4354,9 @@ SELECT Ingr_id, Name, Description, Season FROM Ingredients WHERE (Ingr_id = @Ing
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Id, int Rec_fk, int Cat_id) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Id));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Rec_fk));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(Cat_id));
+        public virtual int Insert(int Rec_fk, int Cat_fk) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Rec_fk));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Cat_fk));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4660,13 +4377,13 @@ SELECT Ingr_id, Name, Description, Season FROM Ingredients WHERE (Ingr_id = @Ing
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Id, int Rec_fk, int Cat_id, int Original_Id, int Original_Rec_fk, int Original_Cat_id) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Id));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Rec_fk));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Cat_id));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Id));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Rec_fk));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Cat_id));
+        public virtual int Update(int Rec_fk, int Cat_fk, int Original_Id, int Original_Rec_fk, int Original_Cat_fk, int Id) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Rec_fk));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Cat_fk));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Rec_fk));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Cat_fk));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4687,8 +4404,315 @@ SELECT Ingr_id, Name, Description, Season FROM Ingredients WHERE (Ingr_id = @Ing
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Rec_fk, int Cat_id, int Original_Id, int Original_Rec_fk, int Original_Cat_id) {
-            return this.Update(Original_Id, Rec_fk, Cat_id, Original_Id, Original_Rec_fk, Original_Cat_id);
+        public virtual int Update(int Rec_fk, int Cat_fk, int Original_Id, int Original_Rec_fk, int Original_Cat_fk) {
+            return this.Update(Rec_fk, Cat_fk, Original_Id, Original_Rec_fk, Original_Cat_fk, Original_Id);
+        }
+    }
+    
+    /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class Recipe_ContainsTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public Recipe_ContainsTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "Recipe_Contains";
+            tableMapping.ColumnMappings.Add("Cont_id", "Cont_id");
+            tableMapping.ColumnMappings.Add("Ingr_fk", "Ingr_fk");
+            tableMapping.ColumnMappings.Add("Rec_fk", "Rec_fk");
+            this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Recipe_Contains] WHERE (([Cont_id] = @Original_Cont_id) AND ([" +
+                "Ingr_fk] = @Original_Ingr_fk) AND ([Rec_fk] = @Original_Rec_fk))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cont_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cont_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Ingr_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ingr_fk", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rec_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rec_fk", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Recipe_Contains] ([Ingr_fk], [Rec_fk]) VALUES (@Ingr_fk, @Rec_" +
+                "fk);\r\nSELECT Cont_id, Ingr_fk, Rec_fk FROM Recipe_Contains WHERE (Cont_id = SCOP" +
+                "E_IDENTITY())";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ingr_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ingr_fk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rec_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rec_fk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Recipe_Contains] SET [Ingr_fk] = @Ingr_fk, [Rec_fk] = @Rec_fk WHERE (([Cont_id] = @Original_Cont_id) AND ([Ingr_fk] = @Original_Ingr_fk) AND ([Rec_fk] = @Original_Rec_fk));
+SELECT Cont_id, Ingr_fk, Rec_fk FROM Recipe_Contains WHERE (Cont_id = @Cont_id)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Ingr_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ingr_fk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rec_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rec_fk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Cont_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Cont_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Ingr_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Ingr_fk", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rec_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rec_fk", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Cont_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Cont_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::RecipeMadness1.Properties.Settings.Default.RecipeDBConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = "SELECT Cont_id, Ingr_fk, Rec_fk FROM dbo.Recipe_Contains";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(RecipeDBDataSet.Recipe_ContainsDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual RecipeDBDataSet.Recipe_ContainsDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            RecipeDBDataSet.Recipe_ContainsDataTable dataTable = new RecipeDBDataSet.Recipe_ContainsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(RecipeDBDataSet.Recipe_ContainsDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(RecipeDBDataSet dataSet) {
+            return this.Adapter.Update(dataSet, "Recipe_Contains");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_Cont_id, int Original_Ingr_fk, int Original_Rec_fk) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Cont_id));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_Ingr_fk));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_Rec_fk));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(int Ingr_fk, int Rec_fk) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Ingr_fk));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Rec_fk));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int Ingr_fk, int Rec_fk, int Original_Cont_id, int Original_Ingr_fk, int Original_Rec_fk, int Cont_id) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Ingr_fk));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Rec_fk));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Cont_id));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Ingr_fk));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Rec_fk));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Cont_id));
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int Ingr_fk, int Rec_fk, int Original_Cont_id, int Original_Ingr_fk, int Original_Rec_fk) {
+            return this.Update(Ingr_fk, Rec_fk, Original_Cont_id, Original_Ingr_fk, Original_Rec_fk, Original_Cont_id);
         }
     }
     
@@ -4827,26 +4851,25 @@ SELECT Ingr_id, Name, Description, Season FROM Ingredients WHERE (Ingr_id = @Ing
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rec_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rec_fk", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Recipe_Styles] ([Id], [Style_fk], [Rec_fk]) VALUES (@Id, @Styl" +
-                "e_fk, @Rec_fk);\r\nSELECT Id, Style_fk, Rec_fk FROM Recipe_Styles WHERE (Id = @Id)" +
-                "";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Recipe_Styles] ([Style_fk], [Rec_fk]) VALUES (@Style_fk, @Rec_" +
+                "fk);\r\nSELECT Id, Style_fk, Rec_fk FROM Recipe_Styles WHERE (Id = SCOPE_IDENTITY(" +
+                "))";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Style_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Style_fk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rec_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rec_fk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Recipe_Styles] SET [Id] = @Id, [Style_fk] = @Style_fk, [Rec_fk] = @" +
-                "Rec_fk WHERE (([Id] = @Original_Id) AND ([Style_fk] = @Original_Style_fk) AND ([" +
-                "Rec_fk] = @Original_Rec_fk));\r\nSELECT Id, Style_fk, Rec_fk FROM Recipe_Styles WH" +
-                "ERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Recipe_Styles] SET [Style_fk] = @Style_fk, [Rec_fk] = @Rec_fk WHERE" +
+                " (([Id] = @Original_Id) AND ([Style_fk] = @Original_Style_fk) AND ([Rec_fk] = @O" +
+                "riginal_Rec_fk));\r\nSELECT Id, Style_fk, Rec_fk FROM Recipe_Styles WHERE (Id = @I" +
+                "d)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Style_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Style_fk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rec_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rec_fk", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Style_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Style_fk", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rec_fk", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rec_fk", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4947,10 +4970,9 @@ SELECT Ingr_id, Name, Description, Season FROM Ingredients WHERE (Ingr_id = @Ing
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Id, int Style_fk, int Rec_fk) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Id));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Style_fk));
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(Rec_fk));
+        public virtual int Insert(int Style_fk, int Rec_fk) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Style_fk));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(Rec_fk));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4971,13 +4993,13 @@ SELECT Ingr_id, Name, Description, Season FROM Ingredients WHERE (Ingr_id = @Ing
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Id, int Style_fk, int Rec_fk, int Original_Id, int Original_Style_fk, int Original_Rec_fk) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Id));
-            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Style_fk));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Rec_fk));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Id));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Style_fk));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Rec_fk));
+        public virtual int Update(int Style_fk, int Rec_fk, int Original_Id, int Original_Style_fk, int Original_Rec_fk, int Id) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Style_fk));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Rec_fk));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Id));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_Style_fk));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Rec_fk));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4999,7 +5021,7 @@ SELECT Ingr_id, Name, Description, Season FROM Ingredients WHERE (Ingr_id = @Ing
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(int Style_fk, int Rec_fk, int Original_Id, int Original_Style_fk, int Original_Rec_fk) {
-            return this.Update(Original_Id, Style_fk, Rec_fk, Original_Id, Original_Style_fk, Original_Rec_fk);
+            return this.Update(Style_fk, Rec_fk, Original_Id, Original_Style_fk, Original_Rec_fk, Original_Id);
         }
     }
     
@@ -5132,7 +5154,7 @@ SELECT Ingr_id, Name, Description, Season FROM Ingredients WHERE (Ingr_id = @Ing
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Recipes] WHERE (([Rec_id] = @Original_Rec_id) AND ((@IsNull_Season = 1 AND [Season] IS NULL) OR ([Season] = @Original_Season)) AND ([Directions] = @Original_Directions) AND ((@IsNull_Favorite = 1 AND [Favorite] IS NULL) OR ([Favorite] = @Original_Favorite)) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Recipes] WHERE (([Rec_id] = @Original_Rec_id) AND ((@IsNull_Season = 1 AND [Season] IS NULL) OR ([Season] = @Original_Season)) AND ([Directions] = @Original_Directions) AND ((@IsNull_Favorite = 1 AND [Favorite] IS NULL) OR ([Favorite] = @Original_Favorite)) AND ([Name] = @Original_Name))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rec_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rec_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Season", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Season", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -5140,25 +5162,22 @@ SELECT Ingr_id, Name, Description, Season FROM Ingredients WHERE (Ingr_id = @Ing
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Directions", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Directions", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Favorite", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Favorite", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Favorite", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Favorite", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Recipes] ([Rec_id], [Season], [Directions], [Favorite], [Name]" +
-                ") VALUES (@Rec_id, @Season, @Directions, @Favorite, @Name);\r\nSELECT Rec_id, Seas" +
-                "on, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @Rec_id)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Recipes] ([Season], [Directions], [Favorite], [Name]) VALUES (" +
+                "@Season, @Directions, @Favorite, @Name);\r\nSELECT Rec_id, Season, Directions, Fav" +
+                "orite, Name FROM Recipes WHERE (Rec_id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rec_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rec_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Season", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Season", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Directions", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Directions", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Favorite", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Favorite", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Recipes] SET [Rec_id] = @Rec_id, [Season] = @Season, [Directions] = @Directions, [Favorite] = @Favorite, [Name] = @Name WHERE (([Rec_id] = @Original_Rec_id) AND ((@IsNull_Season = 1 AND [Season] IS NULL) OR ([Season] = @Original_Season)) AND ([Directions] = @Original_Directions) AND ((@IsNull_Favorite = 1 AND [Favorite] IS NULL) OR ([Favorite] = @Original_Favorite)) AND ((@IsNull_Name = 1 AND [Name] IS NULL) OR ([Name] = @Original_Name)));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Recipes] SET [Season] = @Season, [Directions] = @Directions, [Favorite] = @Favorite, [Name] = @Name WHERE (([Rec_id] = @Original_Rec_id) AND ((@IsNull_Season = 1 AND [Season] IS NULL) OR ([Season] = @Original_Season)) AND ([Directions] = @Original_Directions) AND ((@IsNull_Favorite = 1 AND [Favorite] IS NULL) OR ([Favorite] = @Original_Favorite)) AND ([Name] = @Original_Name));
 SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @Rec_id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rec_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rec_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Season", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Season", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Directions", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Directions", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Favorite", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Favorite", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5169,8 +5188,8 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Directions", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Directions", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Favorite", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Favorite", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Favorite", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Favorite", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Name", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rec_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Rec_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5272,12 +5291,10 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
                 this.Adapter.DeleteCommand.Parameters[5].Value = ((string)(Original_Favorite));
             }
             if ((Original_Name == null)) {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Original_Name");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[7].Value = ((string)(Original_Name));
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((string)(Original_Name));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -5299,31 +5316,30 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Rec_id, string Season, string Directions, string Favorite, string Name) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Rec_id));
+        public virtual int Insert(string Season, string Directions, string Favorite, string Name) {
             if ((Season == null)) {
-                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Season));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Season));
             }
             if ((Directions == null)) {
                 throw new global::System.ArgumentNullException("Directions");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Directions));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Directions));
             }
             if ((Favorite == null)) {
-                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Favorite));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Favorite));
             }
             if ((Name == null)) {
-                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Name");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[4].Value = ((string)(Name));
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Name));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -5345,63 +5361,61 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Rec_id, string Season, string Directions, string Favorite, string Name, int Original_Rec_id, string Original_Season, string Original_Directions, string Original_Favorite, string Original_Name) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Rec_id));
+        public virtual int Update(string Season, string Directions, string Favorite, string Name, int Original_Rec_id, string Original_Season, string Original_Directions, string Original_Favorite, string Original_Name, int Rec_id) {
             if ((Season == null)) {
-                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Season));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Season));
             }
             if ((Directions == null)) {
                 throw new global::System.ArgumentNullException("Directions");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Directions));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Directions));
             }
             if ((Favorite == null)) {
-                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Favorite));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Favorite));
             }
             if ((Name == null)) {
-                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[4].Value = ((string)(Name));
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Name));
             }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_Rec_id));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_Rec_id));
             if ((Original_Season == null)) {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[6].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_Season));
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_Season));
             }
             if ((Original_Directions == null)) {
                 throw new global::System.ArgumentNullException("Original_Directions");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_Directions));
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Original_Directions));
             }
             if ((Original_Favorite == null)) {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_Favorite));
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_Favorite));
             }
             if ((Original_Name == null)) {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+                throw new global::System.ArgumentNullException("Original_Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((string)(Original_Name));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_Name));
             }
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Rec_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5423,7 +5437,7 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string Season, string Directions, string Favorite, string Name, int Original_Rec_id, string Original_Season, string Original_Directions, string Original_Favorite, string Original_Name) {
-            return this.Update(Original_Rec_id, Season, Directions, Favorite, Name, Original_Rec_id, Original_Season, Original_Directions, Original_Favorite, Original_Name);
+            return this.Update(Season, Directions, Favorite, Name, Original_Rec_id, Original_Season, Original_Directions, Original_Favorite, Original_Name, Original_Rec_id);
         }
     }
     
@@ -5560,21 +5574,20 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Styles] ([Style_id], [Name]) VALUES (@Style_id, @Name);\r\nSELEC" +
-                "T Style_id, Name FROM Styles WHERE (Style_id = @Style_id)";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Styles] ([Name]) VALUES (@Name);\r\nSELECT Style_id, Name FROM S" +
+                "tyles WHERE (Style_id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Style_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Style_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Styles] SET [Style_id] = @Style_id, [Name] = @Name WHERE (([Style_i" +
-                "d] = @Original_Style_id) AND ([Name] = @Original_Name));\r\nSELECT Style_id, Name " +
-                "FROM Styles WHERE (Style_id = @Style_id)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Styles] SET [Name] = @Name WHERE (([Style_id] = @Original_Style_id)" +
+                " AND ([Name] = @Original_Name));\r\nSELECT Style_id, Name FROM Styles WHERE (Style" +
+                "_id = @Style_id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Style_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Style_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Style_id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Style_id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Style_id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Style_id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5679,13 +5692,12 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int Style_id, string Name) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(Style_id));
+        public virtual int Insert(string Name) {
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(Name));
+                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(Name));
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -5707,21 +5719,21 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int Style_id, string Name, int Original_Style_id, string Original_Name) {
-            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(Style_id));
+        public virtual int Update(string Name, int Original_Style_id, string Original_Name, int Style_id) {
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(Name));
+                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(Name));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_Style_id));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(Original_Style_id));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Original_Name));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Original_Name));
             }
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Style_id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5743,7 +5755,7 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string Name, int Original_Style_id, string Original_Name) {
-            return this.Update(Original_Style_id, Name, Original_Style_id, Original_Name);
+            return this.Update(Name, Original_Style_id, Original_Name, Original_Style_id);
         }
     }
     
@@ -5761,11 +5773,11 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
         
         private CategoriesTableAdapter _categoriesTableAdapter;
         
-        private ContainsTableAdapter _containsTableAdapter;
-        
         private IngredientsTableAdapter _ingredientsTableAdapter;
         
         private Recipe_CategoriesTableAdapter _recipe_CategoriesTableAdapter;
+        
+        private Recipe_ContainsTableAdapter _recipe_ContainsTableAdapter;
         
         private Recipe_StylesTableAdapter _recipe_StylesTableAdapter;
         
@@ -5807,20 +5819,6 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public ContainsTableAdapter ContainsTableAdapter {
-            get {
-                return this._containsTableAdapter;
-            }
-            set {
-                this._containsTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
         public IngredientsTableAdapter IngredientsTableAdapter {
             get {
                 return this._ingredientsTableAdapter;
@@ -5841,6 +5839,20 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
             }
             set {
                 this._recipe_CategoriesTableAdapter = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public Recipe_ContainsTableAdapter Recipe_ContainsTableAdapter {
+            get {
+                return this._recipe_ContainsTableAdapter;
+            }
+            set {
+                this._recipe_ContainsTableAdapter = value;
             }
         }
         
@@ -5909,10 +5921,6 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
                             && (this._categoriesTableAdapter.Connection != null))) {
                     return this._categoriesTableAdapter.Connection;
                 }
-                if (((this._containsTableAdapter != null) 
-                            && (this._containsTableAdapter.Connection != null))) {
-                    return this._containsTableAdapter.Connection;
-                }
                 if (((this._ingredientsTableAdapter != null) 
                             && (this._ingredientsTableAdapter.Connection != null))) {
                     return this._ingredientsTableAdapter.Connection;
@@ -5920,6 +5928,10 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
                 if (((this._recipe_CategoriesTableAdapter != null) 
                             && (this._recipe_CategoriesTableAdapter.Connection != null))) {
                     return this._recipe_CategoriesTableAdapter.Connection;
+                }
+                if (((this._recipe_ContainsTableAdapter != null) 
+                            && (this._recipe_ContainsTableAdapter.Connection != null))) {
+                    return this._recipe_ContainsTableAdapter.Connection;
                 }
                 if (((this._recipe_StylesTableAdapter != null) 
                             && (this._recipe_StylesTableAdapter.Connection != null))) {
@@ -5949,13 +5961,13 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
                 if ((this._categoriesTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._containsTableAdapter != null)) {
-                    count = (count + 1);
-                }
                 if ((this._ingredientsTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._recipe_CategoriesTableAdapter != null)) {
+                    count = (count + 1);
+                }
+                if ((this._recipe_ContainsTableAdapter != null)) {
                     count = (count + 1);
                 }
                 if ((this._recipe_StylesTableAdapter != null)) {
@@ -6014,21 +6026,21 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._containsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Contains.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._containsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._recipe_CategoriesTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Recipe_Categories.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._recipe_CategoriesTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._recipe_ContainsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Recipe_Contains.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._recipe_ContainsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -6083,19 +6095,19 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._containsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Contains.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._containsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._recipe_CategoriesTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Recipe_Categories.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._recipe_CategoriesTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._recipe_ContainsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Recipe_Contains.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._recipe_ContainsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -6125,19 +6137,19 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._recipe_ContainsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Recipe_Contains.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._recipe_ContainsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._recipe_CategoriesTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Recipe_Categories.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._recipe_CategoriesTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._containsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Contains.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._containsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -6217,11 +6229,6 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
-            if (((this._containsTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._containsTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
             if (((this._ingredientsTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._ingredientsTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
@@ -6229,6 +6236,11 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
             }
             if (((this._recipe_CategoriesTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._recipe_CategoriesTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
+            }
+            if (((this._recipe_ContainsTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._recipe_ContainsTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -6288,15 +6300,6 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
                         adaptersWithAcceptChangesDuringUpdate.Add(this._categoriesTableAdapter.Adapter);
                     }
                 }
-                if ((this._containsTableAdapter != null)) {
-                    revertConnections.Add(this._containsTableAdapter, this._containsTableAdapter.Connection);
-                    this._containsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._containsTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._containsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._containsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._containsTableAdapter.Adapter);
-                    }
-                }
                 if ((this._ingredientsTableAdapter != null)) {
                     revertConnections.Add(this._ingredientsTableAdapter, this._ingredientsTableAdapter.Connection);
                     this._ingredientsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
@@ -6313,6 +6316,15 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
                     if (this._recipe_CategoriesTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._recipe_CategoriesTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._recipe_CategoriesTableAdapter.Adapter);
+                    }
+                }
+                if ((this._recipe_ContainsTableAdapter != null)) {
+                    revertConnections.Add(this._recipe_ContainsTableAdapter, this._recipe_ContainsTableAdapter.Connection);
+                    this._recipe_ContainsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._recipe_ContainsTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._recipe_ContainsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._recipe_ContainsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._recipe_ContainsTableAdapter.Adapter);
                     }
                 }
                 if ((this._recipe_StylesTableAdapter != null)) {
@@ -6404,10 +6416,6 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
                     this._categoriesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._categoriesTableAdapter]));
                     this._categoriesTableAdapter.Transaction = null;
                 }
-                if ((this._containsTableAdapter != null)) {
-                    this._containsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._containsTableAdapter]));
-                    this._containsTableAdapter.Transaction = null;
-                }
                 if ((this._ingredientsTableAdapter != null)) {
                     this._ingredientsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._ingredientsTableAdapter]));
                     this._ingredientsTableAdapter.Transaction = null;
@@ -6415,6 +6423,10 @@ SELECT Rec_id, Season, Directions, Favorite, Name FROM Recipes WHERE (Rec_id = @
                 if ((this._recipe_CategoriesTableAdapter != null)) {
                     this._recipe_CategoriesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._recipe_CategoriesTableAdapter]));
                     this._recipe_CategoriesTableAdapter.Transaction = null;
+                }
+                if ((this._recipe_ContainsTableAdapter != null)) {
+                    this._recipe_ContainsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._recipe_ContainsTableAdapter]));
+                    this._recipe_ContainsTableAdapter.Transaction = null;
                 }
                 if ((this._recipe_StylesTableAdapter != null)) {
                     this._recipe_StylesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._recipe_StylesTableAdapter]));

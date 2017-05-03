@@ -31,5 +31,25 @@ namespace RecipeMadness1
             results.Show();
             this.Hide();
         }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            frmAdHoc adhoc = new frmAdHoc(this);
+            this.Hide();
+            adhoc.Show();
+        }
+
+        private void btnFavorites_Click(object sender, EventArgs e)
+        {
+            clsSQL data = new clsSQL();
+            frmShowResults results = new frmShowResults(data.getFavoriteRecipes());
+            results.Show();
+            this.Hide();
+        }
+
+        private void frmMenu_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

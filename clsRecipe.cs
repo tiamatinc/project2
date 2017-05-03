@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RecipeMadness1
 {
-    class clsRecipe
+    public class clsRecipe
     {
         private String _strName;
         private int _intId;

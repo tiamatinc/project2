@@ -128,37 +128,52 @@ namespace RecipeMadness1
         }
         private void getCats()
         {
-            for(int i = 0; i < lstCategories.CheckedItems.Count; ++i)
+            foreach (ListViewItem i in lstCategories.CheckedItems)
             {
-                _catsUsed.Add(lstCategories.Items[i].Text);
+                _catsUsed.Add(i.Text);
             }
         }
         private void getStyles()
         {
-            for(int i = 0; i < lstStyles.CheckedItems.Count; ++i)
+            foreach(ListViewItem i in lstStyles.CheckedItems)
             {
-                _stylesUsed.Add(lstStyles.Items[i].Text);
+                _stylesUsed.Add(i.Text);
             }
         }
         private void getIngredients()
         {
-            for (int i = 0; i < lstIngredients.CheckedItems.Count; ++i)
+            foreach (ListViewItem item in lstIngredients.CheckedItems)
             {
-                string itemname = lstIngredients.Items[i].Text;
-                for (int k = 0; k < _ingredients.Rows.Count; ++k)
-                {
-                    DataRow dr = _ingredients.Rows[k];
-                    if (dr["Name"].ToString().Equals(itemname))
-                    {
-                        clsIngredient ingr = new clsIngredient();
-                        ingr.id = Int32.Parse(dr["Ingr_id"].ToString());
-                        ingr.name = dr["Name"].ToString();
-                        ingr.description = dr["Description"].ToString();
-                        ingr.season = dr["Season"].ToString();
-                        _ingredientsUsed.Add(ingr);
-                    }
-                }
+                String query = "Name='" + item.Text + "'";
+                DataRow[] dr = _ingredients.Select(query);
+                clsIngredient ingr = new clsIngredient();
+                ingr.id = Int32.Parse(dr[0]["Ingr_id"].ToString());
+                ingr.name = dr[0]["Name"].ToString();
+                ingr.description = dr[0]["Description"].ToString();
+                ingr.season = dr[0]["Season"].ToString();
+                _ingredientsUsed.Add(ingr);
+                
             }
+
+
+            //for (int i = 0; i < lstIngredients.CheckedItems.Count; ++i)
+            //{
+
+            //    string itemname = lstIngredients.Items[i].Text;
+            //    for (int k = 0; k < _ingredients.Rows.Count; ++k)
+            //    {
+            //        DataRow dr = _ingredients.Rows[k];
+            //        if (dr["Name"].ToString().Equals(itemname))
+            //        {
+            //            clsIngredient ingr = new clsIngredient();
+            //            ingr.id = Int32.Parse(dr["Ingr_id"].ToString());
+            //            ingr.name = dr["Name"].ToString();
+            //            ingr.description = dr["Description"].ToString();
+            //            ingr.season = dr["Season"].ToString();
+            //            _ingredientsUsed.Add(ingr);
+            //        }
+            //    }
+            //}
         }
 
         private void btnAddIngredient_Click(object sender, EventArgs e)
@@ -183,7 +198,14 @@ namespace RecipeMadness1
         {
             frmMenu menu = new frmMenu();
             menu.Show();
-            this.Close();
+            this.Hide();
+        }
+
+        private void frmAddRecipe_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmMenu menu = new frmMenu();
+            menu.Show();
+            this.Hide();
         }
     }
 }

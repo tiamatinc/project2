@@ -242,6 +242,7 @@
             this.Controls.Add(this.lblTitle);
             this.Name = "frmAddRecipe";
             this.Text = "Add Recipe";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmAddRecipe_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
